@@ -1,3 +1,6 @@
+
+// swiftlint:disable no_magic_numbers
+
 import Foundation
 import UIKit
 import Kingfisher
@@ -44,7 +47,7 @@ final class ListHeroesTableViewCell: UITableViewCell {
             heroeImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
             
             heroeName.leadingAnchor.constraint(equalTo: heroeImageView.trailingAnchor, constant: 12),
-            heroeName.topAnchor.constraint(equalTo: heroeImageView.topAnchor, constant: 8),
+            heroeName.topAnchor.constraint(equalTo: heroeImageView.topAnchor, constant: 8)
         ])
     }
     
@@ -53,3 +56,5 @@ final class ListHeroesTableViewCell: UITableViewCell {
         heroeName.text = model.name
     }
 }
+
+// swiftlint:enable no_magic_numbers

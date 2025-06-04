@@ -1,3 +1,6 @@
+
+// swiftlint:disable force_cast
+
 import UIKit
 
 final class ListHeroesViewController: UIViewController {
@@ -38,3 +41,4 @@ extension ListHeroesViewController: UITableViewDelegate {
     }
 }
 
+// swiftlint:enable force_cast

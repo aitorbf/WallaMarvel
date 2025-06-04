@@ -231,6 +231,7 @@
 			buildConfigurationList = 1A0E3ABF2862F7E300132FCB /* Build configuration list for PBXNativeTarget "WallaMarvel" */;
 			buildPhases = (
 				1A0E3A912862F7E200132FCB /* Sources */,
+				5B6C80C82DF0E11F0096F885 /* SwiftLint */,
 				1A0E3A922862F7E200132FCB /* Frameworks */,
 				1A0E3A932862F7E200132FCB /* Resources */,
 			);
@@ -351,6 +352,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B6C80C82DF0E11F0096F885 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint; then\n    swiftlint —-fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1A0E3A912862F7E200132FCB /* Sources */ = {

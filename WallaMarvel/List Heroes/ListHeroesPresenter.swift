@@ -2,6 +2,7 @@ import Foundation
 
 protocol ListHeroesPresenterProtocol: AnyObject {
     var ui: ListHeroesUI? { get set }
+    
     func screenTitle() -> String
     func getHeroes()
 }
@@ -31,4 +32,3 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
         }
     }
 }
-

@@ -38,7 +38,7 @@ final class ListHeroesView: UIView {
             heroesTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             heroesTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             heroesTableView.topAnchor.constraint(equalTo: topAnchor),
-            heroesTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            heroesTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

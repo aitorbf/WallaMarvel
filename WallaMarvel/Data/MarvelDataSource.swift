@@ -12,6 +12,6 @@ final class MarvelDataSource: MarvelDataSourceProtocol {
     }
     
     func getHeroes(completionBlock: @escaping (CharacterDataContainer) -> Void) {
-        return apiClient.getHeroes(completionBlock: completionBlock)
+        apiClient.getHeroes(completionBlock: completionBlock)
     }
 }

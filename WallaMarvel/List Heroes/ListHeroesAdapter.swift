@@ -1,3 +1,6 @@
+
+// swiftlint:disable force_cast
+
 import Foundation
 import UIKit
 
@@ -32,3 +35,5 @@ final class ListHeroesAdapter: NSObject, UITableViewDataSource {
         return cell
     }
 }
+
+// swiftlint:enable force_cast
