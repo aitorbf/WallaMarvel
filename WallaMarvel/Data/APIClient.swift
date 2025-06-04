@@ -6,16 +6,16 @@ protocol APIClientProtocol {
 
 final class APIClient: APIClientProtocol {
     enum Constant {
-        static let privateKey = "188f9a5aa76846d907c41cbea6506e4cc455293f"
-        static let publicKey = "d575c26d5c746f623518e753921ac847"
+        static let privateKey = Bundle.main.infoDictionary?["MARVEL_PRIVATE_API_KEY"] as? String
+        static let publicKey = Bundle.main.infoDictionary?["MARVEL_PUBLIC_API_KEY"] as? String
     }
     
     init() { }
     
     func getHeroes(completionBlock: @escaping (CharacterDataContainer) -> Void) {
         let ts = String(Int(Date().timeIntervalSince1970))
-        let privateKey = Constant.privateKey
-        let publicKey = Constant.publicKey
+        let privateKey = Constant.privateKey ?? ""
+        let publicKey = Constant.publicKey ?? ""
         let hash = "\(ts)\(privateKey)\(publicKey)".md5
         let parameters: [String: String] = ["apikey": publicKey,
                                             "ts": ts,

@@ -27,6 +27,7 @@
 		1A821ED82863081A0024D397 /* MarvelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A821ED72863081A0024D397 /* MarvelRepository.swift */; };
 		1A821EDA2863096C0024D397 /* ListHeroesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A821ED92863096C0024D397 /* ListHeroesPresenter.swift */; };
 		1AC0347F2863214900E93178 /* GetHeroes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0347E2863214900E93178 /* GetHeroes.swift */; };
+		5B6C80C02DF0A78E0096F885 /* ConfigExample.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5B6C80BF2DF0A78E0096F885 /* ConfigExample.xcconfig */; };
 		A66389F32DCE202500466318 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A66389F22DCE202500466318 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,8 @@
 		1A821ED72863081A0024D397 /* MarvelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepository.swift; sourceTree = "<group>"; };
 		1A821ED92863096C0024D397 /* ListHeroesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesPresenter.swift; sourceTree = "<group>"; };
 		1AC0347E2863214900E93178 /* GetHeroes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroes.swift; sourceTree = "<group>"; };
+		5B6C80BB2DF09D330096F885 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		5B6C80BF2DF0A78E0096F885 /* ConfigExample.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigExample.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				1A0E3AA12862F7E300132FCB /* Assets.xcassets */,
 				1A0E3AA32862F7E300132FCB /* LaunchScreen.storyboard */,
 				1A0E3AA62862F7E300132FCB /* Info.plist */,
+				5B6C80BB2DF09D330096F885 /* Config.xcconfig */,
+				5B6C80BF2DF0A78E0096F885 /* ConfigExample.xcconfig */,
 			);
 			path = WallaMarvel;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A0E3AA52862F7E300132FCB /* LaunchScreen.storyboard in Resources */,
+				5B6C80C02DF0A78E0096F885 /* ConfigExample.xcconfig in Resources */,
 				1A0E3AA22862F7E300132FCB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +421,7 @@
 /* Begin XCBuildConfiguration section */
 		1A0E3ABD2862F7E300132FCB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B6C80BB2DF09D330096F885 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -475,6 +482,7 @@
 		};
 		1A0E3ABE2862F7E300132FCB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B6C80BB2DF09D330096F885 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

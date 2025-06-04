@@ -1,0 +1,14 @@
+//
+//  ConfigExample.xcconfig
+//  WallaMarvel
+//
+//  Created by Aitor Baragaño Fernández on 4/6/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Create a Config.xcconfig file in the same directory as this file and add your real API keys.
+
+MARVEL_PRIVATE_API_KEY =
+MARVEL_PUBLIC_API_KEY =
