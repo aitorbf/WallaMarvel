@@ -8,7 +8,7 @@ protocol ListHeroesPresenterProtocol: AnyObject {
 }
 
 protocol ListHeroesUI: AnyObject {
-    func update(heroes: [CharacterDataModel])
+    func update(heroes: [CharacterEntity])
 }
 
 final class ListHeroesPresenter: ListHeroesPresenterProtocol {
@@ -26,9 +26,14 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     // MARK: UseCases
     
     func getHeroes() {
-        getHeroesUseCase.execute { characterDataContainer in
-            print("Characters \(characterDataContainer.characters)")
-            self.ui?.update(heroes: characterDataContainer.characters)
+        Task {
+            do {
+                let characterDataContainer = try await getHeroesUseCase.execute()
+                print("Characters \(characterDataContainer.characters ?? [])")
+                ui?.update(heroes: characterDataContainer.characters ?? [])
+            } catch {
+                print("Error fetching heroes: \(error.localizedDescription)")
+            }
         }
     }
 }
