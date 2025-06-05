@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -11,12 +12,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        let presenter = ListHeroesPresenter()
-        let listHeroesViewController = ListHeroesViewController()
-        listHeroesViewController.presenter = presenter
+        let charactersListView = CharactersListView(viewModel: CharactersListViewModel())
+        let hostingController = UIHostingController(rootView: charactersListView)
         
-        let navigationController = UINavigationController(rootViewController: listHeroesViewController)
-        window.rootViewController = navigationController
+        window.rootViewController = hostingController
         self.window = window
         self.window?.makeKeyAndVisible()
     }

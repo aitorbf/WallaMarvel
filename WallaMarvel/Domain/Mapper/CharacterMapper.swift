@@ -13,7 +13,7 @@ struct CharacterMapper {
         .init(
             id: entity.id,
             name: entity.name ?? "",
-            thumbnail: "\(entity.thumbnail?.path ?? "")/portrait_small.\(entity.thumbnail?.extension ?? "")"
+            thumbnail: "\(entity.thumbnail?.path ?? "")/standard_medium.\(entity.thumbnail?.extension ?? "")"
         )
     }
 }
