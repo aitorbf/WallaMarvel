@@ -26,7 +26,7 @@ final class ListHeroesViewController: UIViewController {
 }
 
 extension ListHeroesViewController: ListHeroesUI {
-    func update(heroes: [CharacterEntity]) {
+    func update(heroes: [Character]) {
         listHeroesProvider?.heroes = heroes
     }
 }

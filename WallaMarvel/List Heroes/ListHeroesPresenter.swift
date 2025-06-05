@@ -8,15 +8,15 @@ protocol ListHeroesPresenterProtocol: AnyObject {
 }
 
 protocol ListHeroesUI: AnyObject {
-    func update(heroes: [CharacterEntity])
+    func update(heroes: [Character])
 }
 
 final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     var ui: ListHeroesUI?
-    private let getHeroesUseCase: GetHeroesUseCaseProtocol
+    private let getCharactersUseCase: GetCharactersUseCase
     
-    init(getHeroesUseCase: GetHeroesUseCaseProtocol = GetHeroes()) {
-        self.getHeroesUseCase = getHeroesUseCase
+    init(getCharactersUseCase: GetCharactersUseCase = GetCharactersUseCaseImpl()) {
+        self.getCharactersUseCase = getCharactersUseCase
     }
     
     func screenTitle() -> String {
@@ -28,9 +28,9 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     func getHeroes() {
         Task {
             do {
-                let characterDataContainer = try await getHeroesUseCase.execute()
-                print("Characters \(characterDataContainer.characters ?? [])")
-                ui?.update(heroes: characterDataContainer.characters ?? [])
+                let charactersPage = try await getCharactersUseCase.execute()
+                print("Characters \(charactersPage.characters)")
+                ui?.update(heroes: charactersPage.characters)
             } catch {
                 print("Error fetching heroes: \(error.localizedDescription)")
             }

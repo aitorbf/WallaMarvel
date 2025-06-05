@@ -24,7 +24,7 @@
 		1A821ED4286302EC0024D397 /* CharacterDataContainerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A821ED3286302EC0024D397 /* CharacterDataContainerEntity.swift */; };
 		1A821ED82863081A0024D397 /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A821ED72863081A0024D397 /* CharactersRepository.swift */; };
 		1A821EDA2863096C0024D397 /* ListHeroesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A821ED92863096C0024D397 /* ListHeroesPresenter.swift */; };
-		1AC0347F2863214900E93178 /* GetHeroes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0347E2863214900E93178 /* GetHeroes.swift */; };
+		1AC0347F2863214900E93178 /* GetCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC0347E2863214900E93178 /* GetCharactersUseCase.swift */; };
 		5B6C80C52DF0CA460096F885 /* HttpConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80C42DF0CA460096F885 /* HttpConstants.swift */; };
 		5B6C80C72DF0CBC40096F885 /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80C62DF0CBC40096F885 /* RemoteDataSource.swift */; };
 		5B6C80CB2DF18AA80096F885 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80CA2DF18AA80096F885 /* DataError.swift */; };
@@ -32,6 +32,10 @@
 		5B6C80D12DF195600096F885 /* CharactersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80D02DF195600096F885 /* CharactersAPI.swift */; };
 		5B6C80D32DF195E90096F885 /* URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80D22DF195E90096F885 /* URLRequestConvertible.swift */; };
 		5B6C80D52DF19AFC0096F885 /* CharactersRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80D42DF19AFC0096F885 /* CharactersRemoteDataSource.swift */; };
+		5B6C80DA2DF239260096F885 /* CharactersPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80D92DF239260096F885 /* CharactersPage.swift */; };
+		5B6C80DC2DF239820096F885 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80DB2DF239820096F885 /* Character.swift */; };
+		5B6C80DF2DF23B010096F885 /* CharactersPageMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80DE2DF23B010096F885 /* CharactersPageMapper.swift */; };
+		5B6C80E12DF23B710096F885 /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80E02DF23B710096F885 /* CharacterMapper.swift */; };
 		A66389F32DCE202500466318 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A66389F22DCE202500466318 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +78,7 @@
 		1A821ED3286302EC0024D397 /* CharacterDataContainerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDataContainerEntity.swift; sourceTree = "<group>"; };
 		1A821ED72863081A0024D397 /* CharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepository.swift; sourceTree = "<group>"; };
 		1A821ED92863096C0024D397 /* ListHeroesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesPresenter.swift; sourceTree = "<group>"; };
-		1AC0347E2863214900E93178 /* GetHeroes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroes.swift; sourceTree = "<group>"; };
+		1AC0347E2863214900E93178 /* GetCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersUseCase.swift; sourceTree = "<group>"; };
 		5B6C80BB2DF09D330096F885 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		5B6C80BF2DF0A78E0096F885 /* ConfigExample.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigExample.xcconfig; sourceTree = "<group>"; };
 		5B6C80C42DF0CA460096F885 /* HttpConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpConstants.swift; sourceTree = "<group>"; };
@@ -84,6 +88,10 @@
 		5B6C80D02DF195600096F885 /* CharactersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPI.swift; sourceTree = "<group>"; };
 		5B6C80D22DF195E90096F885 /* URLRequestConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestConvertible.swift; sourceTree = "<group>"; };
 		5B6C80D42DF19AFC0096F885 /* CharactersRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRemoteDataSource.swift; sourceTree = "<group>"; };
+		5B6C80D92DF239260096F885 /* CharactersPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersPage.swift; sourceTree = "<group>"; };
+		5B6C80DB2DF239820096F885 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		5B6C80DE2DF23B010096F885 /* CharactersPageMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersPageMapper.swift; sourceTree = "<group>"; };
+		5B6C80E02DF23B710096F885 /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				1AC0347D286320F000E93178 /* UseCases */,
+				5B6C80D82DF2390A0096F885 /* Model */,
+				5B6C80DD2DF23AE60096F885 /* Mapper */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -218,7 +228,7 @@
 		1AC0347D286320F000E93178 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				1AC0347E2863214900E93178 /* GetHeroes.swift */,
+				1AC0347E2863214900E93178 /* GetCharactersUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -291,6 +301,24 @@
 				1A821ECB2862FF990024D397 /* String+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5B6C80D82DF2390A0096F885 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B6C80D92DF239260096F885 /* CharactersPage.swift */,
+				5B6C80DB2DF239820096F885 /* Character.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5B6C80DD2DF23AE60096F885 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				5B6C80DE2DF23B010096F885 /* CharactersPageMapper.swift */,
+				5B6C80E02DF23B710096F885 /* CharacterMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,18 +481,22 @@
 				5B6C80CE2DF195300096F885 /* API.swift in Sources */,
 				1A0E3A9D2862F7E200132FCB /* ListHeroesViewController.swift in Sources */,
 				5B6C80D52DF19AFC0096F885 /* CharactersRemoteDataSource.swift in Sources */,
-				1AC0347F2863214900E93178 /* GetHeroes.swift in Sources */,
+				5B6C80DA2DF239260096F885 /* CharactersPage.swift in Sources */,
+				1AC0347F2863214900E93178 /* GetCharactersUseCase.swift in Sources */,
 				1A7B9BBD286D81AA00EBC1A6 /* CharacterEntity.swift in Sources */,
 				1A0E3A992862F7E200132FCB /* AppDelegate.swift in Sources */,
 				1A821ECC2862FF990024D397 /* String+Ext.swift in Sources */,
 				5B6C80D32DF195E90096F885 /* URLRequestConvertible.swift in Sources */,
+				5B6C80E12DF23B710096F885 /* CharacterMapper.swift in Sources */,
 				5B6C80CB2DF18AA80096F885 /* DataError.swift in Sources */,
 				1A3B732A286AE195007BF626 /* ListHeroesAdapter.swift in Sources */,
 				1A7B9BBF286D81B600EBC1A6 /* ThumbnailEntity.swift in Sources */,
+				5B6C80DC2DF239820096F885 /* Character.swift in Sources */,
 				1A821EDA2863096C0024D397 /* ListHeroesPresenter.swift in Sources */,
 				5B6C80C72DF0CBC40096F885 /* RemoteDataSource.swift in Sources */,
 				1A0E3A9B2862F7E200132FCB /* SceneDelegate.swift in Sources */,
 				5B6C80C52DF0CA460096F885 /* HttpConstants.swift in Sources */,
+				5B6C80DF2DF23B010096F885 /* CharactersPageMapper.swift in Sources */,
 				5B6C80D12DF195600096F885 /* CharactersAPI.swift in Sources */,
 				1A3B7326286ADD1E007BF626 /* ListHeroesTableView.swift in Sources */,
 				1A3B7328286ADEE6007BF626 /* ListHeroesTableViewCell.swift in Sources */,

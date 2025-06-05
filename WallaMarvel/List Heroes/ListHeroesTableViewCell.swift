@@ -51,10 +51,8 @@ final class ListHeroesTableViewCell: UITableViewCell {
         ])
     }
     
-    func configure(model: CharacterEntity) {
-        if let thumbnailPath = model.thumbnail?.path, let thumbnailExtension = model.thumbnail?.extension {
-            heroeImageView.kf.setImage(with: URL(string: thumbnailPath + "/portrait_small." + thumbnailExtension))
-        }
+    func configure(model: Character) {
+        heroeImageView.kf.setImage(with: URL(string: model.thumbnail))
         heroeName.text = model.name
     }
 }
