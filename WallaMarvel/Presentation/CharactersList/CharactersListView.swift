@@ -9,9 +9,9 @@
 import SwiftUI
 import Kingfisher
 
-struct CharactersListView: View {
+struct CharactersListView<ViewModel: CharactersListViewModel>: View {
     
-    @ObservedObject var viewModel: CharactersListViewModel
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         NavigationView {
@@ -46,7 +46,7 @@ struct CharactersListView: View {
 }
 
 #Preview {
-    CharactersListView(viewModel: CharactersListViewModel())
+    CharactersListView(viewModel: MockCharactersListViewModel())
 }
 
 // swiftlint:enable no_magic_numbers

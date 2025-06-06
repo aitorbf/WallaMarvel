@@ -26,3 +26,24 @@ extension CharacterDataContainerEntity {
         self.characters = try data.decode([CharacterEntity].self, forKey: .characters)
     }
 }
+
+// swiftlint:disable no_magic_numbers
+extension CharacterDataContainerEntity {
+    
+    static func mock(
+        offset: Int = 0,
+        limit: Int = 20,
+        total: Int = 20,
+        count: Int = 20,
+        characters: [CharacterEntity] = CharacterEntity.mockList(count: 20)
+    ) -> CharacterDataContainerEntity {
+        CharacterDataContainerEntity(
+            offset: offset,
+            limit: limit,
+            total: total,
+            count: count,
+            characters: characters
+        )
+    }
+}
+// swiftlint:enable no_magic_numbers

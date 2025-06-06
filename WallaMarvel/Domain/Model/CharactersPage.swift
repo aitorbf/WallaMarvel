@@ -14,3 +14,22 @@ struct CharactersPage {
     let total: Int
     let characters: [Character]
 }
+
+// swiftlint:disable no_magic_numbers
+extension CharactersPage {
+    
+    static func mock(
+        offset: Int = 0,
+        count: Int = 20,
+        total: Int = 20,
+        characters: [Character] = Character.mockList(count: 20)
+    ) -> CharactersPage {
+        CharactersPage(
+            offset: offset,
+            count: count,
+            total: total,
+            characters: characters
+        )
+    }
+}
+// swiftlint:enable no_magic_numbers

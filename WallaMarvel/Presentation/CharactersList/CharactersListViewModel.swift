@@ -8,7 +8,14 @@
 import Foundation
 import SwiftUI
 
-final class CharactersListViewModel: ObservableObject {
+protocol CharactersListViewModel: ObservableObject {
+    var characters: [Character] { get set }
+    var isLoading: Bool { get set }
+    
+    func getCharacters() async
+}
+    
+final class CharactersListViewModelImpl: CharactersListViewModel {
     
     @Published var characters: [Character] = []
     @Published var isLoading: Bool = true
@@ -24,8 +31,6 @@ final class CharactersListViewModel: ObservableObject {
     
     @MainActor
     func getCharacters() async {
-        isLoading = true
-        
         do {
             let charactersPage = try await getCharactersUseCase.execute()
             print("Characters \(charactersPage.characters)")
@@ -35,5 +40,23 @@ final class CharactersListViewModel: ObservableObject {
             isLoading = false
             print("Error fetching characters: \(error.localizedDescription)")
         }
+    }
+}
+
+final class MockCharactersListViewModel: CharactersListViewModel {
+    
+    @Published var characters: [Character] = []
+    @Published var isLoading: Bool = true
+    
+    init() {
+        Task { @MainActor in
+            await getCharacters()
+        }
+    }
+    
+    @MainActor
+    func getCharacters() async {
+        characters = CharactersPage.mock().characters
+        isLoading = false
     }
 }

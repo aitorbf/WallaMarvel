@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        let charactersListView = CharactersListView(viewModel: CharactersListViewModel())
+        let charactersListView = CharactersListView(viewModel: CharactersListViewModelImpl())
         let hostingController = UIHostingController(rootView: charactersListView)
         
         window.rootViewController = hostingController
