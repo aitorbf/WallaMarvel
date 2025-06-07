@@ -22,7 +22,7 @@ final class CharactersListViewModelImpl: CharactersListViewModel {
     
     private let getCharactersUseCase: GetCharactersUseCase
     
-    init(getCharactersUseCase: GetCharactersUseCase = GetCharactersUseCaseImpl()) {
+    init(getCharactersUseCase: GetCharactersUseCase) {
         self.getCharactersUseCase = getCharactersUseCase
         Task { @MainActor in
             await getCharacters()

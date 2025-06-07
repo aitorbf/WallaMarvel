@@ -7,7 +7,7 @@ protocol GetCharactersUseCase {
 struct GetCharactersUseCaseImpl: GetCharactersUseCase {
     private let repository: CharactersRepository
     
-    init(repository: CharactersRepository = CharactersRepositoryImpl()) {
+    init(repository: CharactersRepository) {
         self.repository = repository
     }
     

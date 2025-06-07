@@ -33,6 +33,8 @@
 		5B6C80E12DF23B710096F885 /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C80E02DF23B710096F885 /* CharacterMapper.swift */; };
 		5B6C81922DF2470E0096F885 /* CharactersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C81912DF2470E0096F885 /* CharactersListView.swift */; };
 		5B6C81942DF247270096F885 /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C81932DF247270096F885 /* CharactersListViewModel.swift */; };
+		5B9C30752DF348FA00D1D3CB /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 5B9C30742DF348FA00D1D3CB /* Swinject */; };
+		5B9C30782DF349BD00D1D3CB /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C30772DF349BD00D1D3CB /* DIContainer.swift */; };
 		A66389F32DCE202500466318 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A66389F22DCE202500466318 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +88,7 @@
 		5B6C80E02DF23B710096F885 /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
 		5B6C81912DF2470E0096F885 /* CharactersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListView.swift; sourceTree = "<group>"; };
 		5B6C81932DF247270096F885 /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
+		5B9C30772DF349BD00D1D3CB /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A66389F32DCE202500466318 /* Kingfisher in Frameworks */,
+				5B9C30752DF348FA00D1D3CB /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,10 +143,11 @@
 			children = (
 				1A0E3A982862F7E200132FCB /* AppDelegate.swift */,
 				1A0E3A9A2862F7E200132FCB /* SceneDelegate.swift */,
-				5B6C80D72DF1B6870096F885 /* Extensions */,
 				5B6C81902DF2429C0096F885 /* Presentation */,
 				1A821EC62862FD650024D397 /* Domain */,
 				1A821EC72862FD6E0024D397 /* Data */,
+				5B9C30762DF3499700D1D3CB /* DI */,
+				5B6C80D72DF1B6870096F885 /* Extensions */,
 				1A0E3AA12862F7E300132FCB /* Assets.xcassets */,
 				1A0E3AA32862F7E300132FCB /* LaunchScreen.storyboard */,
 				1A0E3AA62862F7E300132FCB /* Info.plist */,
@@ -320,6 +325,14 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		5B9C30762DF3499700D1D3CB /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				5B9C30772DF349BD00D1D3CB /* DIContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -411,6 +424,7 @@
 			mainGroup = 1A0E3A8C2862F7E200132FCB;
 			packageReferences = (
 				A66389F12DCE202500466318 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				5B9C30732DF348FA00D1D3CB /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 1A0E3A962862F7E200132FCB /* Products */;
 			projectDirPath = "";
@@ -488,6 +502,7 @@
 				5B6C80E12DF23B710096F885 /* CharacterMapper.swift in Sources */,
 				5B6C80CB2DF18AA80096F885 /* DataError.swift in Sources */,
 				1A7B9BBF286D81B600EBC1A6 /* ThumbnailEntity.swift in Sources */,
+				5B9C30782DF349BD00D1D3CB /* DIContainer.swift in Sources */,
 				5B6C80DC2DF239820096F885 /* Character.swift in Sources */,
 				5B6C80C72DF0CBC40096F885 /* RemoteDataSource.swift in Sources */,
 				1A0E3A9B2862F7E200132FCB /* SceneDelegate.swift in Sources */,
@@ -826,17 +841,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5B9C30732DF348FA00D1D3CB /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 		A66389F12DCE202500466318 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.2.4;
+				minimumVersion = 8.3.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5B9C30742DF348FA00D1D3CB /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B9C30732DF348FA00D1D3CB /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		A66389F22DCE202500466318 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A66389F12DCE202500466318 /* XCRemoteSwiftPackageReference "Kingfisher" */;

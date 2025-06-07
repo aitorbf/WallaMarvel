@@ -8,7 +8,7 @@ final class CharactersRepositoryImpl {
     
     private let remote: CharactersRemoteDataSource
     
-    init(remoteDataSource: CharactersRemoteDataSource = CharactersRemoteDataSourceImpl()) {
+    init(remoteDataSource: CharactersRemoteDataSource) {
         self.remote = remoteDataSource
     }
 }
