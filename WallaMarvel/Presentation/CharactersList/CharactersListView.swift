@@ -42,6 +42,11 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
             }
             .navigationTitle("List of Characters")
         }
+        .onAppear {
+            Task {
+                await viewModel.getCharacters()
+            }
+        }
     }
 }
 

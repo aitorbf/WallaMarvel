@@ -11,9 +11,9 @@ extension CharacterEntity {
     
     static func mock(
         id: Int = 1,
-        name: String = "Character 1",
-        thumbnailPath: String = "https://marvel.com/character/1/image",
-        thumbnailExt: String = "jpg"
+        name: String? = "Character 1",
+        thumbnailPath: String? = "https://marvel.com/character/1/image",
+        thumbnailExt: String? = "jpg"
     ) -> CharacterEntity {
         CharacterEntity(
             id: id,

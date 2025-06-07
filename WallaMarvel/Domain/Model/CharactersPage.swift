@@ -20,13 +20,12 @@ extension CharactersPage {
     
     static func mock(
         offset: Int = 0,
-        count: Int = 20,
         total: Int = 20,
         characters: [Character] = Character.mockList(count: 20)
     ) -> CharactersPage {
         CharactersPage(
             offset: offset,
-            count: count,
+            count: characters.count,
             total: total,
             characters: characters
         )

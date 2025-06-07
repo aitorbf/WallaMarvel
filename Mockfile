@@ -1,0 +1,13 @@
+sourceryCommand: null
+sourceryTemplate: null
+WallaMarvelTests:
+  sources:
+    include:
+    - ./WallaMarvel
+  output: ./WallaMarvelTests/Mock/Mock.generated.swift
+  targets:
+  - WallaMarvelTests
+  testable:
+  - WallaMarvel
+  import:
+  - Foundation

@@ -34,14 +34,13 @@ extension CharacterDataContainerEntity {
         offset: Int = 0,
         limit: Int = 20,
         total: Int = 20,
-        count: Int = 20,
         characters: [CharacterEntity] = CharacterEntity.mockList(count: 20)
     ) -> CharacterDataContainerEntity {
         CharacterDataContainerEntity(
             offset: offset,
             limit: limit,
             total: total,
-            count: count,
+            count: characters.count,
             characters: characters
         )
     }

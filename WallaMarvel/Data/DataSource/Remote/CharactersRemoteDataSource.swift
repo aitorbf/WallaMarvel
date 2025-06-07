@@ -7,6 +7,7 @@
 
 import Foundation
 
+// sourcery: AutoMockable
 protocol CharactersRemoteDataSource {
     func getCharacters() async throws -> CharacterDataContainerEntity
 }

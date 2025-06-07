@@ -24,9 +24,6 @@ final class CharactersListViewModelImpl: CharactersListViewModel {
     
     init(getCharactersUseCase: GetCharactersUseCase) {
         self.getCharactersUseCase = getCharactersUseCase
-        Task { @MainActor in
-            await getCharacters()
-        }
     }
     
     @MainActor
@@ -40,23 +37,5 @@ final class CharactersListViewModelImpl: CharactersListViewModel {
             isLoading = false
             print("Error fetching characters: \(error.localizedDescription)")
         }
-    }
-}
-
-final class MockCharactersListViewModel: CharactersListViewModel {
-    
-    @Published var characters: [Character] = []
-    @Published var isLoading: Bool = true
-    
-    init() {
-        Task { @MainActor in
-            await getCharacters()
-        }
-    }
-    
-    @MainActor
-    func getCharacters() async {
-        characters = CharactersPage.mock().characters
-        isLoading = false
     }
 }

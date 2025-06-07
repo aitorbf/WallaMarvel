@@ -1,5 +1,6 @@
 import Foundation
 
+// sourcery: AutoMockable
 protocol GetCharactersUseCase {
     func execute() async throws -> CharactersPage
 }

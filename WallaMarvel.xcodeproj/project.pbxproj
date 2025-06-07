@@ -11,7 +11,6 @@
 		1A0E3A9B2862F7E200132FCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E3A9A2862F7E200132FCB /* SceneDelegate.swift */; };
 		1A0E3AA22862F7E300132FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E3AA12862F7E300132FCB /* Assets.xcassets */; };
 		1A0E3AA52862F7E300132FCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E3AA32862F7E300132FCB /* LaunchScreen.storyboard */; };
-		1A0E3AB02862F7E300132FCB /* WallaMarvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E3AAF2862F7E300132FCB /* WallaMarvelTests.swift */; };
 		1A0E3ABA2862F7E300132FCB /* WallaMarvelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E3AB92862F7E300132FCB /* WallaMarvelUITests.swift */; };
 		1A0E3ABC2862F7E300132FCB /* WallaMarvelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E3ABB2862F7E300132FCB /* WallaMarvelUITestsLaunchTests.swift */; };
 		1A7B9BBD286D81AA00EBC1A6 /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B9BBC286D81AA00EBC1A6 /* CharacterEntity.swift */; };
@@ -35,6 +34,12 @@
 		5B6C81942DF247270096F885 /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6C81932DF247270096F885 /* CharactersListViewModel.swift */; };
 		5B9C30752DF348FA00D1D3CB /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 5B9C30742DF348FA00D1D3CB /* Swinject */; };
 		5B9C30782DF349BD00D1D3CB /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C30772DF349BD00D1D3CB /* DIContainer.swift */; };
+		5B9C31292DF443DA00D1D3CB /* SwiftyMocky in Frameworks */ = {isa = PBXBuildFile; productRef = 5B9C31282DF443DA00D1D3CB /* SwiftyMocky */; };
+		5B9C31312DF46B0D00D1D3CB /* Mock.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C31302DF46B0D00D1D3CB /* Mock.generated.swift */; };
+		5B9C31E52DF4708B00D1D3CB /* CharactersRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C31E42DF4708B00D1D3CB /* CharactersRepositoryTests.swift */; };
+		5B9C31E72DF488F900D1D3CB /* GetCharactersUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C31E62DF488F900D1D3CB /* GetCharactersUseCaseTests.swift */; };
+		5B9C31E92DF4938000D1D3CB /* MockCharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C31E82DF4938000D1D3CB /* MockCharactersListViewModel.swift */; };
+		5B9C31ED2DF4946700D1D3CB /* CharactersListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C31EC2DF4946700D1D3CB /* CharactersListViewModelTests.swift */; };
 		A66389F32DCE202500466318 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A66389F22DCE202500466318 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +68,6 @@
 		1A0E3AA42862F7E300132FCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A0E3AA62862F7E300132FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A0E3AAB2862F7E300132FCB /* WallaMarvelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallaMarvelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A0E3AAF2862F7E300132FCB /* WallaMarvelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallaMarvelTests.swift; sourceTree = "<group>"; };
 		1A0E3AB52862F7E300132FCB /* WallaMarvelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallaMarvelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A0E3AB92862F7E300132FCB /* WallaMarvelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallaMarvelUITests.swift; sourceTree = "<group>"; };
 		1A0E3ABB2862F7E300132FCB /* WallaMarvelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallaMarvelUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -89,6 +93,11 @@
 		5B6C81912DF2470E0096F885 /* CharactersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListView.swift; sourceTree = "<group>"; };
 		5B6C81932DF247270096F885 /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 		5B9C30772DF349BD00D1D3CB /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		5B9C31302DF46B0D00D1D3CB /* Mock.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.generated.swift; sourceTree = "<group>"; };
+		5B9C31E42DF4708B00D1D3CB /* CharactersRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryTests.swift; sourceTree = "<group>"; };
+		5B9C31E62DF488F900D1D3CB /* GetCharactersUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharactersUseCaseTests.swift; sourceTree = "<group>"; };
+		5B9C31E82DF4938000D1D3CB /* MockCharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCharactersListViewModel.swift; sourceTree = "<group>"; };
+		5B9C31EC2DF4946700D1D3CB /* CharactersListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9C31292DF443DA00D1D3CB /* SwiftyMocky in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,7 +170,10 @@
 		1A0E3AAE2862F7E300132FCB /* WallaMarvelTests */ = {
 			isa = PBXGroup;
 			children = (
-				1A0E3AAF2862F7E300132FCB /* WallaMarvelTests.swift */,
+				5B9C31EA2DF4944300D1D3CB /* Presentation */,
+				5B9C312D2DF46ABA00D1D3CB /* Mock */,
+				5B9C31E02DF4704500D1D3CB /* Domain */,
+				5B9C31E12DF4705000D1D3CB /* Data */,
 			);
 			path = WallaMarvelTests;
 			sourceTree = "<group>";
@@ -179,6 +192,7 @@
 			children = (
 				5B6C81912DF2470E0096F885 /* CharactersListView.swift */,
 				5B6C81932DF247270096F885 /* CharactersListViewModel.swift */,
+				5B9C31E82DF4938000D1D3CB /* MockCharactersListViewModel.swift */,
 			);
 			path = CharactersList;
 			sourceTree = "<group>";
@@ -333,6 +347,62 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
+		5B9C312D2DF46ABA00D1D3CB /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				5B9C31302DF46B0D00D1D3CB /* Mock.generated.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		5B9C31E02DF4704500D1D3CB /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5B9C31E22DF4705F00D1D3CB /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		5B9C31E12DF4705000D1D3CB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5B9C31E32DF4706700D1D3CB /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5B9C31E22DF4705F00D1D3CB /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				5B9C31E62DF488F900D1D3CB /* GetCharactersUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		5B9C31E32DF4706700D1D3CB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				5B9C31E42DF4708B00D1D3CB /* CharactersRepositoryTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		5B9C31EA2DF4944300D1D3CB /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				5B9C31EB2DF4945900D1D3CB /* CharactersList */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		5B9C31EB2DF4945900D1D3CB /* CharactersList */ = {
+			isa = PBXGroup;
+			children = (
+				5B9C31EC2DF4946700D1D3CB /* CharactersListViewModelTests.swift */,
+			);
+			path = CharactersList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -425,6 +495,7 @@
 			packageReferences = (
 				A66389F12DCE202500466318 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				5B9C30732DF348FA00D1D3CB /* XCRemoteSwiftPackageReference "Swinject" */,
+				5B9C31272DF443DA00D1D3CB /* XCRemoteSwiftPackageReference "SwiftyMocky" */,
 			);
 			productRefGroup = 1A0E3A962862F7E200132FCB /* Products */;
 			projectDirPath = "";
@@ -502,6 +573,7 @@
 				5B6C80E12DF23B710096F885 /* CharacterMapper.swift in Sources */,
 				5B6C80CB2DF18AA80096F885 /* DataError.swift in Sources */,
 				1A7B9BBF286D81B600EBC1A6 /* ThumbnailEntity.swift in Sources */,
+				5B9C31E92DF4938000D1D3CB /* MockCharactersListViewModel.swift in Sources */,
 				5B9C30782DF349BD00D1D3CB /* DIContainer.swift in Sources */,
 				5B6C80DC2DF239820096F885 /* Character.swift in Sources */,
 				5B6C80C72DF0CBC40096F885 /* RemoteDataSource.swift in Sources */,
@@ -519,7 +591,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A0E3AB02862F7E300132FCB /* WallaMarvelTests.swift in Sources */,
+				5B9C31ED2DF4946700D1D3CB /* CharactersListViewModelTests.swift in Sources */,
+				5B9C31E72DF488F900D1D3CB /* GetCharactersUseCaseTests.swift in Sources */,
+				5B9C31E52DF4708B00D1D3CB /* CharactersRepositoryTests.swift in Sources */,
+				5B9C31312DF46B0D00D1D3CB /* Mock.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -849,6 +924,14 @@
 				minimumVersion = 2.9.1;
 			};
 		};
+		5B9C31272DF443DA00D1D3CB /* XCRemoteSwiftPackageReference "SwiftyMocky" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MakeAWishFoundation/SwiftyMocky";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 		A66389F12DCE202500466318 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -864,6 +947,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B9C30732DF348FA00D1D3CB /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		5B9C31282DF443DA00D1D3CB /* SwiftyMocky */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B9C31272DF443DA00D1D3CB /* XCRemoteSwiftPackageReference "SwiftyMocky" */;
+			productName = SwiftyMocky;
 		};
 		A66389F22DCE202500466318 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
