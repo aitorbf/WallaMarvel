@@ -2,7 +2,10 @@ import Foundation
 
 // sourcery: AutoMockable
 protocol CharactersRepository {
-    func getCharacters() async throws -> CharacterDataContainerEntity
+    func getCharacters(
+        offset: Int,
+        limit: Int
+    ) async throws -> CharacterDataContainerEntity
 }
 
 final class CharactersRepositoryImpl {
@@ -16,7 +19,13 @@ final class CharactersRepositoryImpl {
 
 extension CharactersRepositoryImpl: CharactersRepository {
     
-    func getCharacters() async throws -> CharacterDataContainerEntity {
-        try await remote.getCharacters()
+    func getCharacters(
+        offset: Int,
+        limit: Int
+    ) async throws -> CharacterDataContainerEntity {
+        try await remote.getCharacters(
+            offset: offset,
+            limit: limit
+        )
     }
 }

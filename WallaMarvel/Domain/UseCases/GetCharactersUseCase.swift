@@ -2,7 +2,10 @@ import Foundation
 
 // sourcery: AutoMockable
 protocol GetCharactersUseCase {
-    func execute() async throws -> CharactersPage
+    func execute(
+        offset: Int,
+        limit: Int
+    ) async throws -> CharactersPage
 }
 
 struct GetCharactersUseCaseImpl: GetCharactersUseCase {
@@ -12,8 +15,14 @@ struct GetCharactersUseCaseImpl: GetCharactersUseCase {
         self.repository = repository
     }
     
-    func execute() async throws -> CharactersPage {
-        let characterDataContainer = try await repository.getCharacters()
+    func execute(
+        offset: Int,
+        limit: Int
+    ) async throws -> CharactersPage {
+        let characterDataContainer = try await repository.getCharacters(
+            offset: offset,
+            limit: limit
+        )
         return CharactersPageMapper.map(characterDataContainer)
     }
 }

@@ -28,11 +28,11 @@ extension Character {
         )
     }
 
-    static func mockList(count: Int = 10) -> [Character] {
+    static func mockList(offset: Int = 0, count: Int = 10) -> [Character] {
         (1...count).map { i in
             .mock(
-                id: i,
-                name: "Character \(i)"
+                id: i + offset,
+                name: "Character \(i + offset)"
             )
         }
     }

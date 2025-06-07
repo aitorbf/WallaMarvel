@@ -21,20 +21,13 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
                 } else {
                     ScrollView(showsIndicators: false) {
                         LazyVStack {
-                            ForEach(viewModel.characters, id: \.id) { character in
-                                HStack(spacing: 12) {
-                                    KFImage.url(URL(string: character.thumbnail))
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 80, height: 80)
-                                        .padding(.leading, 12)
-                                        .padding(.top, 12)
-                                    
-                                    Text(character.name)
-                                        .multilineTextAlignment(.leading)
-                                    
-                                    Spacer()
-                                }
+                            ForEach(Array(viewModel.characters.enumerated()), id: \.element.id) { index, character in
+                                characterListItem(character: character)
+                                    .onAppear {
+                                        Task {
+                                            await viewModel.loadMoreCharacters(currentIndex: index)
+                                        }
+                                    }
                             }
                         }
                     }
@@ -46,6 +39,22 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
             Task {
                 await viewModel.getCharacters()
             }
+        }
+    }
+    
+    private func characterListItem(character: Character) -> some View {
+        HStack(spacing: 12) {
+            KFImage.url(URL(string: character.thumbnail))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80, height: 80)
+                .padding(.leading, 12)
+                .padding(.top, 12)
+            
+            Text(character.name)
+                .multilineTextAlignment(.leading)
+            
+            Spacer()
         }
     }
 }
