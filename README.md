@@ -79,15 +79,17 @@ The configuration file is `.swiftlint.yml` located at the root of the project. Y
 > SwiftLint is **required** to build the project cleanly. If you don’t have it installed, the script will warn you.
 <br/>
 
-## ✅ Unit Testing
+## ✅ Testing
 
-### Frameworks and Libraries
+### Unit Testing
+
+#### Frameworks and Libraries
 
 - **Swift Testing** for running and verifying tests.  
 - **SwiftyMocky** for automatic mock generation.
 <br/><br/>
 
-### Installing SwiftyMocky
+#### Installing SwiftyMocky
 
 To generate mocks you need to install SwiftyMocky CLI.
 I did with Mint but you can check other ways in [SwiftyMocky](https://github.com/MakeAWishFoundation/SwiftyMocky) repository:
@@ -98,7 +100,7 @@ mint install MakeAWishFoundation/SwiftyMocky
 
 ```
 
-### Generating Mocks
+#### Generating Mocks
 
 The configuration for mocks generation is in the Mockfile located in the project root.
 To generate or update mocks execute:
@@ -111,7 +113,7 @@ mint run SwiftyMocky generate
 This will automatically generate mock classes in the specified directory.
 <br/><br/>
 
-### Marking Protocols to Mock
+#### Marking Protocols to Mock
 
 To tell SwiftyMocky which protocols mock, mark them in the code with the following comment:
 
@@ -122,6 +124,11 @@ protocol SomeService { ... }
 ```
 
 SwiftyMocky will detect this marker and generate a ready-to-use mock for testing.
+<br/><br/>
+
+### Snapshot Testing
+
+For UI testing I use [SnapshotTesting](https://github.com/pointfreeco/swift-snapshot-testing?tab=readme-ov-file), a library that captures the visual state of views and compares them to stored reference images, alerting us to any unexpected changes in the UI.
 <br/><br/>
 
 ## 📄 License

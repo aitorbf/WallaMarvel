@@ -13,12 +13,6 @@ final class MockCharactersListViewModel: CharactersListViewModel {
     @Published var characters: [Character] = []
     @Published var isLoading: Bool = true
     
-    init() {
-        Task { @MainActor in
-            await getCharacters()
-        }
-    }
-    
     @MainActor
     func getCharacters() async {
         characters = CharactersPage.mock().characters
