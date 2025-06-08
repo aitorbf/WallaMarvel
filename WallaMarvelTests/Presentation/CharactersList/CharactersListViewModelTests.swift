@@ -41,6 +41,7 @@ import SwiftyMocky
             .execute(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response
             )
         )
@@ -52,7 +53,8 @@ import SwiftyMocky
             .once,
             .execute(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -72,6 +74,7 @@ import SwiftyMocky
             .execute(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willThrow: errorResponse
             )
         )
@@ -83,7 +86,8 @@ import SwiftyMocky
             .once,
             .execute(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -113,6 +117,7 @@ import SwiftyMocky
             .execute(
                 offset: Parameter(integerLiteral: offset1),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response1
             )
         )
@@ -122,6 +127,7 @@ import SwiftyMocky
             .execute(
                 offset: Parameter(integerLiteral: offset2),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response2
             )
         )
@@ -133,7 +139,8 @@ import SwiftyMocky
             .once,
             .execute(
                 offset: Parameter(integerLiteral: offset1),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -148,10 +155,12 @@ import SwiftyMocky
             .once,
             .execute(
                 offset: Parameter(integerLiteral: offset2),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
+        #expect(!viewModel.characters.isEmpty)
         #expect(viewModel.characters.count == (response1.count + response2.count))
     }
     
@@ -171,6 +180,7 @@ import SwiftyMocky
             .execute(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response
             )
         )
@@ -188,7 +198,8 @@ import SwiftyMocky
             .once,
             .execute(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -212,6 +223,7 @@ import SwiftyMocky
             .execute(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response
             )
         )
@@ -229,7 +241,8 @@ import SwiftyMocky
             .once,
             .execute(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -255,6 +268,7 @@ import SwiftyMocky
             .execute(
                 offset: Parameter(integerLiteral: offset1),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response1
             )
         )
@@ -264,6 +278,7 @@ import SwiftyMocky
             .execute(
                 offset: Parameter(integerLiteral: offset2),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willThrow: errorResponse
             )
         )
@@ -275,7 +290,8 @@ import SwiftyMocky
             .once,
             .execute(
                 offset: Parameter(integerLiteral: offset1),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -290,10 +306,75 @@ import SwiftyMocky
             .once,
             .execute(
                 offset: Parameter(integerLiteral: offset2),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
+        #expect(!viewModel.characters.isEmpty)
         #expect(viewModel.characters.count == response1.count)
+    }
+    
+    @Test("Search resets state and fetches characters")
+    func testSearchResetsStateAndFetchesCharacters() async throws {
+        let offset = 0
+        let limit = 50
+        let total = 100
+        let searchText = "iron"
+        let response = CharactersPage.mock(
+            offset: offset,
+            total: total,
+            characters: Character.mockList(count: limit)
+        )
+        
+        Given(
+            useCase,
+            .execute(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                searchText: "",
+                willReturn: response
+            )
+        )
+        
+        Given(
+            useCase,
+            .execute(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                searchText: Parameter(stringLiteral: searchText),
+                willReturn: response
+            )
+        )
+        
+        await viewModel.getCharacters()
+        
+        Verify(
+            useCase,
+            .once,
+            .execute(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
+            )
+        )
+        
+        #expect(!viewModel.characters.isEmpty)
+        #expect(viewModel.characters.count == response.count)
+        
+        viewModel.searchText = searchText
+        
+        Verify(
+            useCase,
+            .once,
+            .execute(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                searchText: Parameter(stringLiteral: searchText)
+            )
+        )
+        
+        #expect(!viewModel.characters.isEmpty)
+        #expect(viewModel.characters.count == response.count)
     }
 }

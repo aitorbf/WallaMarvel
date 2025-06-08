@@ -35,18 +35,20 @@ import SwiftyMocky
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response
             )
         )
         
-        let result = try await repository.getCharacters(offset: offset, limit: limit)
+        let result = try await repository.getCharacters(offset: offset, limit: limit, searchText: "")
         
         Verify(
             remoteDataSource,
             .once,
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -73,18 +75,20 @@ import SwiftyMocky
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response
             )
         )
         
-        let result = try await repository.getCharacters(offset: offset, limit: limit)
+        let result = try await repository.getCharacters(offset: offset, limit: limit, searchText: "")
         
         Verify(
             remoteDataSource,
             .once,
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -106,12 +110,13 @@ import SwiftyMocky
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willThrow: errorResponse
             )
         )
 
         await #expect(throws: DataError.self) {
-            try await repository.getCharacters(offset: offset, limit: limit)
+            try await repository.getCharacters(offset: offset, limit: limit, searchText: "")
         }
         
         Verify(
@@ -119,7 +124,8 @@ import SwiftyMocky
             .once,
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
     }

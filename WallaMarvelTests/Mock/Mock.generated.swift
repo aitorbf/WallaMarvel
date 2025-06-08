@@ -56,16 +56,16 @@ open class CharactersRemoteDataSourceMock: CharactersRemoteDataSource, Mock {
 
 
 
-    open func getCharacters(offset: Int, limit: Int) throws -> CharacterDataContainerEntity {
-        addInvocation(.m_getCharacters__offset_offsetlimit_limit(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`)))
-		let perform = methodPerformValue(.m_getCharacters__offset_offsetlimit_limit(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`))) as? (Int, Int) -> Void
-		perform?(`offset`, `limit`)
+    open func getCharacters(offset: Int, limit: Int, searchText: String) throws -> CharacterDataContainerEntity {
+        addInvocation(.m_getCharacters__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`), Parameter<String>.value(`searchText`)))
+		let perform = methodPerformValue(.m_getCharacters__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`), Parameter<String>.value(`searchText`))) as? (Int, Int, String) -> Void
+		perform?(`offset`, `limit`, `searchText`)
 		var __value: CharacterDataContainerEntity
 		do {
-		    __value = try methodReturnValue(.m_getCharacters__offset_offsetlimit_limit(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`))).casted()
+		    __value = try methodReturnValue(.m_getCharacters__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`), Parameter<String>.value(`searchText`))).casted()
 		} catch MockError.notStubed {
-			onFatalFailure("Stub return value not specified for getCharacters(offset: Int, limit: Int). Use given")
-			Failure("Stub return value not specified for getCharacters(offset: Int, limit: Int). Use given")
+			onFatalFailure("Stub return value not specified for getCharacters(offset: Int, limit: Int, searchText: String). Use given")
+			Failure("Stub return value not specified for getCharacters(offset: Int, limit: Int, searchText: String). Use given")
 		} catch {
 		    throw error
 		}
@@ -74,26 +74,27 @@ open class CharactersRemoteDataSourceMock: CharactersRemoteDataSource, Mock {
 
 
     fileprivate enum MethodType {
-        case m_getCharacters__offset_offsetlimit_limit(Parameter<Int>, Parameter<Int>)
+        case m_getCharacters__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>, Parameter<Int>, Parameter<String>)
 
         static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
             switch (lhs, rhs) {
-            case (.m_getCharacters__offset_offsetlimit_limit(let lhsOffset, let lhsLimit), .m_getCharacters__offset_offsetlimit_limit(let rhsOffset, let rhsLimit)):
+            case (.m_getCharacters__offset_offsetlimit_limitsearchText_searchText(let lhsOffset, let lhsLimit, let lhsSearchtext), .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(let rhsOffset, let rhsLimit, let rhsSearchtext)):
 				var results: [Matcher.ParameterComparisonResult] = []
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsOffset, rhs: rhsOffset, with: matcher), lhsOffset, rhsOffset, "offset"))
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsLimit, rhs: rhsLimit, with: matcher), lhsLimit, rhsLimit, "limit"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsSearchtext, rhs: rhsSearchtext, with: matcher), lhsSearchtext, rhsSearchtext, "searchText"))
 				return Matcher.ComparisonResult(results)
             }
         }
 
         func intValue() -> Int {
             switch self {
-            case let .m_getCharacters__offset_offsetlimit_limit(p0, p1): return p0.intValue + p1.intValue
+            case let .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(p0, p1, p2): return p0.intValue + p1.intValue + p2.intValue
             }
         }
         func assertionName() -> String {
             switch self {
-            case .m_getCharacters__offset_offsetlimit_limit: return ".getCharacters(offset:limit:)"
+            case .m_getCharacters__offset_offsetlimit_limitsearchText_searchText: return ".getCharacters(offset:limit:searchText:)"
             }
         }
     }
@@ -107,15 +108,15 @@ open class CharactersRemoteDataSourceMock: CharactersRemoteDataSource, Mock {
         }
 
 
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, willReturn: CharacterDataContainerEntity...) -> MethodStub {
-            return Given(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, willReturn: CharacterDataContainerEntity...) -> MethodStub {
+            return Given(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, willThrow: Error...) -> MethodStub {
-            return Given(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`), products: willThrow.map({ StubProduct.throw($0) }))
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), products: willThrow.map({ StubProduct.throw($0) }))
         }
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, willProduce: (StubberThrows<CharacterDataContainerEntity>) -> Void) -> MethodStub {
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, willProduce: (StubberThrows<CharacterDataContainerEntity>) -> Void) -> MethodStub {
             let willThrow: [Error] = []
-			let given: Given = { return Given(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let given: Given = { return Given(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), products: willThrow.map({ StubProduct.throw($0) })) }()
 			let stubber = given.stubThrows(for: (CharacterDataContainerEntity).self)
 			willProduce(stubber)
 			return given
@@ -125,15 +126,15 @@ open class CharactersRemoteDataSourceMock: CharactersRemoteDataSource, Mock {
     public struct Verify {
         fileprivate var method: MethodType
 
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>) -> Verify { return Verify(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`))}
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>) -> Verify { return Verify(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`))}
     }
 
     public struct Perform {
         fileprivate var method: MethodType
         var performs: Any
 
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, perform: @escaping (Int, Int) -> Void) -> Perform {
-            return Perform(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`), performs: perform)
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, perform: @escaping (Int, Int, String) -> Void) -> Perform {
+            return Perform(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), performs: perform)
         }
     }
 
@@ -254,16 +255,16 @@ open class CharactersRepositoryMock: CharactersRepository, Mock {
 
 
 
-    open func getCharacters(offset: Int, limit: Int) throws -> CharacterDataContainerEntity {
-        addInvocation(.m_getCharacters__offset_offsetlimit_limit(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`)))
-		let perform = methodPerformValue(.m_getCharacters__offset_offsetlimit_limit(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`))) as? (Int, Int) -> Void
-		perform?(`offset`, `limit`)
+    open func getCharacters(offset: Int, limit: Int, searchText: String) throws -> CharacterDataContainerEntity {
+        addInvocation(.m_getCharacters__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`), Parameter<String>.value(`searchText`)))
+		let perform = methodPerformValue(.m_getCharacters__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`), Parameter<String>.value(`searchText`))) as? (Int, Int, String) -> Void
+		perform?(`offset`, `limit`, `searchText`)
 		var __value: CharacterDataContainerEntity
 		do {
-		    __value = try methodReturnValue(.m_getCharacters__offset_offsetlimit_limit(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`))).casted()
+		    __value = try methodReturnValue(.m_getCharacters__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`), Parameter<String>.value(`searchText`))).casted()
 		} catch MockError.notStubed {
-			onFatalFailure("Stub return value not specified for getCharacters(offset: Int, limit: Int). Use given")
-			Failure("Stub return value not specified for getCharacters(offset: Int, limit: Int). Use given")
+			onFatalFailure("Stub return value not specified for getCharacters(offset: Int, limit: Int, searchText: String). Use given")
+			Failure("Stub return value not specified for getCharacters(offset: Int, limit: Int, searchText: String). Use given")
 		} catch {
 		    throw error
 		}
@@ -272,26 +273,27 @@ open class CharactersRepositoryMock: CharactersRepository, Mock {
 
 
     fileprivate enum MethodType {
-        case m_getCharacters__offset_offsetlimit_limit(Parameter<Int>, Parameter<Int>)
+        case m_getCharacters__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>, Parameter<Int>, Parameter<String>)
 
         static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
             switch (lhs, rhs) {
-            case (.m_getCharacters__offset_offsetlimit_limit(let lhsOffset, let lhsLimit), .m_getCharacters__offset_offsetlimit_limit(let rhsOffset, let rhsLimit)):
+            case (.m_getCharacters__offset_offsetlimit_limitsearchText_searchText(let lhsOffset, let lhsLimit, let lhsSearchtext), .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(let rhsOffset, let rhsLimit, let rhsSearchtext)):
 				var results: [Matcher.ParameterComparisonResult] = []
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsOffset, rhs: rhsOffset, with: matcher), lhsOffset, rhsOffset, "offset"))
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsLimit, rhs: rhsLimit, with: matcher), lhsLimit, rhsLimit, "limit"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsSearchtext, rhs: rhsSearchtext, with: matcher), lhsSearchtext, rhsSearchtext, "searchText"))
 				return Matcher.ComparisonResult(results)
             }
         }
 
         func intValue() -> Int {
             switch self {
-            case let .m_getCharacters__offset_offsetlimit_limit(p0, p1): return p0.intValue + p1.intValue
+            case let .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(p0, p1, p2): return p0.intValue + p1.intValue + p2.intValue
             }
         }
         func assertionName() -> String {
             switch self {
-            case .m_getCharacters__offset_offsetlimit_limit: return ".getCharacters(offset:limit:)"
+            case .m_getCharacters__offset_offsetlimit_limitsearchText_searchText: return ".getCharacters(offset:limit:searchText:)"
             }
         }
     }
@@ -305,15 +307,15 @@ open class CharactersRepositoryMock: CharactersRepository, Mock {
         }
 
 
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, willReturn: CharacterDataContainerEntity...) -> MethodStub {
-            return Given(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, willReturn: CharacterDataContainerEntity...) -> MethodStub {
+            return Given(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, willThrow: Error...) -> MethodStub {
-            return Given(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`), products: willThrow.map({ StubProduct.throw($0) }))
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), products: willThrow.map({ StubProduct.throw($0) }))
         }
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, willProduce: (StubberThrows<CharacterDataContainerEntity>) -> Void) -> MethodStub {
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, willProduce: (StubberThrows<CharacterDataContainerEntity>) -> Void) -> MethodStub {
             let willThrow: [Error] = []
-			let given: Given = { return Given(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let given: Given = { return Given(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), products: willThrow.map({ StubProduct.throw($0) })) }()
 			let stubber = given.stubThrows(for: (CharacterDataContainerEntity).self)
 			willProduce(stubber)
 			return given
@@ -323,15 +325,15 @@ open class CharactersRepositoryMock: CharactersRepository, Mock {
     public struct Verify {
         fileprivate var method: MethodType
 
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>) -> Verify { return Verify(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`))}
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>) -> Verify { return Verify(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`))}
     }
 
     public struct Perform {
         fileprivate var method: MethodType
         var performs: Any
 
-        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, perform: @escaping (Int, Int) -> Void) -> Perform {
-            return Perform(method: .m_getCharacters__offset_offsetlimit_limit(`offset`, `limit`), performs: perform)
+        public static func getCharacters(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, perform: @escaping (Int, Int, String) -> Void) -> Perform {
+            return Perform(method: .m_getCharacters__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), performs: perform)
         }
     }
 
@@ -452,16 +454,16 @@ open class GetCharactersUseCaseMock: GetCharactersUseCase, Mock {
 
 
 
-    open func execute(offset: Int, limit: Int) throws -> CharactersPage {
-        addInvocation(.m_execute__offset_offsetlimit_limit(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`)))
-		let perform = methodPerformValue(.m_execute__offset_offsetlimit_limit(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`))) as? (Int, Int) -> Void
-		perform?(`offset`, `limit`)
+    open func execute(offset: Int, limit: Int, searchText: String) throws -> CharactersPage {
+        addInvocation(.m_execute__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`), Parameter<String>.value(`searchText`)))
+		let perform = methodPerformValue(.m_execute__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`), Parameter<String>.value(`searchText`))) as? (Int, Int, String) -> Void
+		perform?(`offset`, `limit`, `searchText`)
 		var __value: CharactersPage
 		do {
-		    __value = try methodReturnValue(.m_execute__offset_offsetlimit_limit(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`))).casted()
+		    __value = try methodReturnValue(.m_execute__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>.value(`offset`), Parameter<Int>.value(`limit`), Parameter<String>.value(`searchText`))).casted()
 		} catch MockError.notStubed {
-			onFatalFailure("Stub return value not specified for execute(offset: Int, limit: Int). Use given")
-			Failure("Stub return value not specified for execute(offset: Int, limit: Int). Use given")
+			onFatalFailure("Stub return value not specified for execute(offset: Int, limit: Int, searchText: String). Use given")
+			Failure("Stub return value not specified for execute(offset: Int, limit: Int, searchText: String). Use given")
 		} catch {
 		    throw error
 		}
@@ -470,26 +472,27 @@ open class GetCharactersUseCaseMock: GetCharactersUseCase, Mock {
 
 
     fileprivate enum MethodType {
-        case m_execute__offset_offsetlimit_limit(Parameter<Int>, Parameter<Int>)
+        case m_execute__offset_offsetlimit_limitsearchText_searchText(Parameter<Int>, Parameter<Int>, Parameter<String>)
 
         static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
             switch (lhs, rhs) {
-            case (.m_execute__offset_offsetlimit_limit(let lhsOffset, let lhsLimit), .m_execute__offset_offsetlimit_limit(let rhsOffset, let rhsLimit)):
+            case (.m_execute__offset_offsetlimit_limitsearchText_searchText(let lhsOffset, let lhsLimit, let lhsSearchtext), .m_execute__offset_offsetlimit_limitsearchText_searchText(let rhsOffset, let rhsLimit, let rhsSearchtext)):
 				var results: [Matcher.ParameterComparisonResult] = []
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsOffset, rhs: rhsOffset, with: matcher), lhsOffset, rhsOffset, "offset"))
 				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsLimit, rhs: rhsLimit, with: matcher), lhsLimit, rhsLimit, "limit"))
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsSearchtext, rhs: rhsSearchtext, with: matcher), lhsSearchtext, rhsSearchtext, "searchText"))
 				return Matcher.ComparisonResult(results)
             }
         }
 
         func intValue() -> Int {
             switch self {
-            case let .m_execute__offset_offsetlimit_limit(p0, p1): return p0.intValue + p1.intValue
+            case let .m_execute__offset_offsetlimit_limitsearchText_searchText(p0, p1, p2): return p0.intValue + p1.intValue + p2.intValue
             }
         }
         func assertionName() -> String {
             switch self {
-            case .m_execute__offset_offsetlimit_limit: return ".execute(offset:limit:)"
+            case .m_execute__offset_offsetlimit_limitsearchText_searchText: return ".execute(offset:limit:searchText:)"
             }
         }
     }
@@ -503,15 +506,15 @@ open class GetCharactersUseCaseMock: GetCharactersUseCase, Mock {
         }
 
 
-        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>, willReturn: CharactersPage...) -> MethodStub {
-            return Given(method: .m_execute__offset_offsetlimit_limit(`offset`, `limit`), products: willReturn.map({ StubProduct.return($0 as Any) }))
+        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, willReturn: CharactersPage...) -> MethodStub {
+            return Given(method: .m_execute__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), products: willReturn.map({ StubProduct.return($0 as Any) }))
         }
-        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>, willThrow: Error...) -> MethodStub {
-            return Given(method: .m_execute__offset_offsetlimit_limit(`offset`, `limit`), products: willThrow.map({ StubProduct.throw($0) }))
+        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, willThrow: Error...) -> MethodStub {
+            return Given(method: .m_execute__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), products: willThrow.map({ StubProduct.throw($0) }))
         }
-        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>, willProduce: (StubberThrows<CharactersPage>) -> Void) -> MethodStub {
+        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, willProduce: (StubberThrows<CharactersPage>) -> Void) -> MethodStub {
             let willThrow: [Error] = []
-			let given: Given = { return Given(method: .m_execute__offset_offsetlimit_limit(`offset`, `limit`), products: willThrow.map({ StubProduct.throw($0) })) }()
+			let given: Given = { return Given(method: .m_execute__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), products: willThrow.map({ StubProduct.throw($0) })) }()
 			let stubber = given.stubThrows(for: (CharactersPage).self)
 			willProduce(stubber)
 			return given
@@ -521,15 +524,15 @@ open class GetCharactersUseCaseMock: GetCharactersUseCase, Mock {
     public struct Verify {
         fileprivate var method: MethodType
 
-        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>) -> Verify { return Verify(method: .m_execute__offset_offsetlimit_limit(`offset`, `limit`))}
+        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>) -> Verify { return Verify(method: .m_execute__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`))}
     }
 
     public struct Perform {
         fileprivate var method: MethodType
         var performs: Any
 
-        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>, perform: @escaping (Int, Int) -> Void) -> Perform {
-            return Perform(method: .m_execute__offset_offsetlimit_limit(`offset`, `limit`), performs: perform)
+        public static func execute(offset: Parameter<Int>, limit: Parameter<Int>, searchText: Parameter<String>, perform: @escaping (Int, Int, String) -> Void) -> Perform {
+            return Perform(method: .m_execute__offset_offsetlimit_limitsearchText_searchText(`offset`, `limit`, `searchText`), performs: perform)
         }
     }
 

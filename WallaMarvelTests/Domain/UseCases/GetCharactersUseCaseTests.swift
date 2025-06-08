@@ -35,18 +35,20 @@ import SwiftyMocky
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response
             )
         )
         
-        let result = try await useCase.execute(offset: offset, limit: limit)
+        let result = try await useCase.execute(offset: offset, limit: limit, searchText: "")
         
         Verify(
             repository,
             .once,
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -72,18 +74,20 @@ import SwiftyMocky
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response
             )
         )
         
-        let result = try await useCase.execute(offset: offset, limit: limit)
+        let result = try await useCase.execute(offset: offset, limit: limit, searchText: "")
         
         Verify(
             repository,
             .once,
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -114,18 +118,20 @@ import SwiftyMocky
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response
             )
         )
         
-        let result = try await useCase.execute(offset: offset, limit: limit)
+        let result = try await useCase.execute(offset: offset, limit: limit, searchText: "")
         
         Verify(
             repository,
             .once,
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -160,18 +166,20 @@ import SwiftyMocky
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willReturn: response
             )
         )
         
-        let result = try await useCase.execute(offset: offset, limit: limit)
+        let result = try await useCase.execute(offset: offset, limit: limit, searchText: "")
         
         Verify(
             repository,
             .once,
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
         
@@ -196,12 +204,13 @@ import SwiftyMocky
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
                 limit: Parameter(integerLiteral: limit),
+                searchText: "",
                 willThrow: errorResponse
             )
         )
 
         await #expect(throws: DataError.self) {
-            try await useCase.execute(offset: offset, limit: limit)
+            try await useCase.execute(offset: offset, limit: limit, searchText: "")
         }
         
         Verify(
@@ -209,7 +218,8 @@ import SwiftyMocky
             .once,
             .getCharacters(
                 offset: Parameter(integerLiteral: offset),
-                limit: Parameter(integerLiteral: limit)
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
             )
         )
     }
