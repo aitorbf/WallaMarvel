@@ -21,84 +21,164 @@ import SwiftyMocky
 
     @Test("Get characters page")
     func testGetCharactersPage() async throws {
-        let response = CharacterDataContainerEntity.mock()
-        Given(repository, .getCharacters(willReturn: response))
+        let offset = 0
+        let limit = 20
+        let total = 100
+        let response = CharacterDataContainerEntity.mock(
+            offset: offset,
+            total: total,
+            characters: CharacterEntity.mockList(count: limit)
+        )
         
-        Verify(repository, .once, .getCharacters())
+        Given(
+            repository,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                willReturn: response
+            )
+        )
         
-        let result = try await useCase.execute()
+        let result = try await useCase.execute(offset: offset, limit: limit)
         
-        #expect(result.offset == response.offset)
-        #expect(result.total == response.total)
-        #expect(result.count == result.characters.count)
+        Verify(
+            repository,
+            .once,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit)
+            )
+        )
+        
+        #expect(result.offset == offset)
+        #expect(result.total == total)
+        #expect(result.count == response.count)
         #expect(!result.characters.isEmpty)
     }
     
     @Test("Get empty characters page")
     func testGetCharactersEmptyPage() async throws {
+        let offset = 0
+        let limit = 20
+        let total = 0
         let response = CharacterDataContainerEntity.mock(
-            offset: 0,
-            total: 0,
+            offset: offset,
+            total: total,
             characters: []
         )
-        Given(repository, .getCharacters(willReturn: response))
         
-        Verify(repository, .once, .getCharacters())
+        Given(
+            repository,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                willReturn: response
+            )
+        )
         
-        let result = try await useCase.execute()
+        let result = try await useCase.execute(offset: offset, limit: limit)
         
-        #expect(result.offset == response.offset)
-        #expect(result.total == response.total)
-        #expect(result.count == result.characters.count)
+        Verify(
+            repository,
+            .once,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit)
+            )
+        )
+        
+        #expect(result.offset == offset)
+        #expect(result.total == total)
+        #expect(result.count == total)
         #expect(result.characters.isEmpty)
     }
     
     @Test("Data mapping from entity to model")
     func testDataMapping() async throws {
-        let characterEntity: CharacterEntity = .mock(thumbnailPath: "thumbnailPath", thumbnailExt: "jpg")
+        let offset = 0
+        let limit = 20
+        let total = 1
+        let thumbnailUrl = "thumbnailPath/standard_medium.jpg"
+        let characterEntity: CharacterEntity = .mock(
+            thumbnailPath: "thumbnailPath",
+            thumbnailExt: "jpg"
+        )
         let response = CharacterDataContainerEntity.mock(
-            offset: 0,
-            total: 1,
+            offset: offset,
+            total: total,
             characters: [characterEntity]
         )
-        Given(repository, .getCharacters(willReturn: response))
         
-        Verify(repository, .once, .getCharacters())
+        Given(
+            repository,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                willReturn: response
+            )
+        )
         
-        let result = try await useCase.execute()
+        let result = try await useCase.execute(offset: offset, limit: limit)
         
-        #expect(result.offset == response.offset)
-        #expect(result.total == response.total)
-        #expect(result.count == result.characters.count)
-        #expect(result.characters.count == 1)
+        Verify(
+            repository,
+            .once,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit)
+            )
+        )
+        
+        #expect(result.offset == offset)
+        #expect(result.total == total)
+        #expect(result.count == total)
+        #expect(result.characters.count == total)
         
         #expect(result.characters.first?.id == characterEntity.id)
         #expect(result.characters.first?.name == characterEntity.name)
-        #expect(result.characters.first?.thumbnail == "thumbnailPath/standard_medium.jpg")
+        #expect(result.characters.first?.thumbnail == thumbnailUrl)
     }
     
     @Test("Data mapping with nil values")
     func testDataMappingWithNilValues() async throws {
+        let offset = 0
+        let limit = 20
+        let total = 1
         let characterEntity: CharacterEntity = .mock(
             name: nil,
             thumbnailPath: nil,
             thumbnailExt: "jpg"
         )
         let response = CharacterDataContainerEntity.mock(
-            offset: 0,
-            total: 1,
+            offset: offset,
+            total: total,
             characters: [characterEntity]
         )
-        Given(repository, .getCharacters(willReturn: response))
         
-        Verify(repository, .once, .getCharacters())
+        Given(
+            repository,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                willReturn: response
+            )
+        )
         
-        let result = try await useCase.execute()
+        let result = try await useCase.execute(offset: offset, limit: limit)
         
-        #expect(result.offset == response.offset)
-        #expect(result.total == response.total)
-        #expect(result.count == result.characters.count)
-        #expect(result.characters.count == 1)
+        Verify(
+            repository,
+            .once,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit)
+            )
+        )
+        
+        #expect(result.offset == offset)
+        #expect(result.total == total)
+        #expect(result.count == total)
+        #expect(result.characters.count == total)
         
         #expect(result.characters.first?.id == characterEntity.id)
         #expect(result.characters.first?.name == "")
@@ -107,13 +187,30 @@ import SwiftyMocky
 
     @Test("Throws error when repository fails")
     func testThrowsErrorWhenRepositoryFails() async {
+        let offset = 0
+        let limit = 20
         let errorResponse = DataError.serverError
-        Given(repository, .getCharacters(willThrow: errorResponse))
         
-        Verify(repository, .once, .getCharacters())
+        Given(
+            repository,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                willThrow: errorResponse
+            )
+        )
 
         await #expect(throws: DataError.self) {
-            try await useCase.execute()
+            try await useCase.execute(offset: offset, limit: limit)
         }
+        
+        Verify(
+            repository,
+            .once,
+            .getCharacters(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit)
+            )
+        )
     }
 }
