@@ -34,6 +34,10 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
                 }
             }
             .navigationTitle("List of Characters")
+            .searchable(
+                text: $viewModel.searchText,
+                placement: .navigationBarDrawer(displayMode: .always)
+            )
         }
         .onAppear {
             Task {
@@ -52,6 +56,7 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
                 .padding(.top, 12)
             
             Text(character.name)
+                .font(.headline)
                 .multilineTextAlignment(.leading)
             
             Spacer()

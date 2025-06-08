@@ -4,7 +4,8 @@ import Foundation
 protocol CharactersRepository {
     func getCharacters(
         offset: Int,
-        limit: Int
+        limit: Int,
+        searchText: String
     ) async throws -> CharacterDataContainerEntity
 }
 
@@ -21,11 +22,13 @@ extension CharactersRepositoryImpl: CharactersRepository {
     
     func getCharacters(
         offset: Int,
-        limit: Int
+        limit: Int,
+        searchText: String
     ) async throws -> CharacterDataContainerEntity {
         try await remote.getCharacters(
             offset: offset,
-            limit: limit
+            limit: limit,
+            searchText: searchText
         )
     }
 }

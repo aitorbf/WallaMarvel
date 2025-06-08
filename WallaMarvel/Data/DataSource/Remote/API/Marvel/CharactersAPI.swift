@@ -11,7 +11,7 @@ extension API.Marvel {
     
     enum CharactersAPI: URLRequestConvertible {
         
-        case getCharacters(offset: Int, limit: Int)
+        case getCharacters(offset: Int, limit: Int, searchText: String)
         
         var method: HttpConstants.Method {
             switch self {
@@ -39,9 +39,12 @@ extension API.Marvel {
             ]
             
             switch self {
-            case let .getCharacters(offset, limit):
+            case let .getCharacters(offset, limit, searchText):
                 parameters["offset"] = String(offset)
                 parameters["limit"] = String(limit)
+                if !searchText.isEmpty {
+                    parameters["nameStartsWith"] = searchText
+                }
             }
             
             urlComponents.queryItems = parameters.map { key, value in

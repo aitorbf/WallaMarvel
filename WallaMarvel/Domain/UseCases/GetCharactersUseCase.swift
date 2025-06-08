@@ -4,7 +4,8 @@ import Foundation
 protocol GetCharactersUseCase {
     func execute(
         offset: Int,
-        limit: Int
+        limit: Int,
+        searchText: String
     ) async throws -> CharactersPage
 }
 
@@ -17,11 +18,13 @@ struct GetCharactersUseCaseImpl: GetCharactersUseCase {
     
     func execute(
         offset: Int,
-        limit: Int
+        limit: Int,
+        searchText: String
     ) async throws -> CharactersPage {
         let characterDataContainer = try await repository.getCharacters(
             offset: offset,
-            limit: limit
+            limit: limit,
+            searchText: searchText
         )
         return CharactersPageMapper.map(characterDataContainer)
     }
