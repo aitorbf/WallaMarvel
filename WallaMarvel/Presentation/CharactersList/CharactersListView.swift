@@ -11,6 +11,7 @@ import Kingfisher
 
 struct CharactersListView<ViewModel: CharactersListViewModel>: View {
     
+    @EnvironmentObject var coordinator: Coordinator
     @ObservedObject var viewModel: ViewModel
     
     var body: some View {
@@ -28,6 +29,10 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
                                             await viewModel.loadMoreCharacters(currentIndex: index)
                                         }
                                     }
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        coordinator.navigateTo(.characterDetail(character))
+                                    }
                             }
                         }
                     }
@@ -39,16 +44,12 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
                 placement: .navigationBarDrawer(displayMode: .always)
             )
         }
-        .onAppear {
-            Task {
-                await viewModel.getCharacters()
-            }
-        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func characterListItem(character: Character) -> some View {
         HStack(spacing: 12) {
-            KFImage.url(URL(string: character.thumbnail))
+            KFImage.url(URL(string: character.thumbnail.standard))
                 .resizable()
                 .scaledToFit()
                 .frame(width: 80, height: 80)

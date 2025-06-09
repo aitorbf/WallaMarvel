@@ -43,6 +43,13 @@ final class DIContainer {
         }
         return viewModel
     }
+    
+    func characterDetailViewModel(character: Character) -> CharacterDetailViewModelImpl {
+        guard let viewModel = container.resolve(CharacterDetailViewModelImpl.self, argument: character) else {
+            fatalError("CharacterDetailViewModel dependency could not be resolved.")
+        }
+        return viewModel
+    }
 }
 
 private extension DIContainer {
@@ -80,6 +87,10 @@ private extension DIContainer {
                 fatalError("GetCharactersUseCase dependency could not be resolved.")
             }
             return CharactersListViewModelImpl(getCharactersUseCase: useCase)
+        }
+        
+        container.register(CharacterDetailViewModelImpl.self) { _, character in
+            return CharacterDetailViewModelImpl(character: character)
         }
     }
 }

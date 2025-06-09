@@ -84,7 +84,6 @@ private extension CharactersListViewModelImpl {
     
     private func observeSearchChanges() {
         $searchText
-            .dropFirst()
             .removeDuplicates()
             .debounce(for: .milliseconds(searchDebounceMilliseconds), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in

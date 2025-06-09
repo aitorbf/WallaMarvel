@@ -102,7 +102,9 @@ import SwiftyMocky
         let offset = 0
         let limit = 20
         let total = 1
-        let thumbnailUrl = "thumbnailPath/standard_medium.jpg"
+        let standardThumbnailUrl = "thumbnailPath/standard_medium.jpg"
+        let portraitThumbnailUrl = "thumbnailPath/portrait_xlarge.jpg"
+        let landscapeThumbnailUrl = "thumbnailPath/landscape_xlarge.jpg"
         let characterEntity: CharacterEntity = .mock(
             thumbnailPath: "thumbnailPath",
             thumbnailExt: "jpg"
@@ -142,7 +144,9 @@ import SwiftyMocky
         
         #expect(result.characters.first?.id == characterEntity.id)
         #expect(result.characters.first?.name == characterEntity.name)
-        #expect(result.characters.first?.thumbnail == thumbnailUrl)
+        #expect(result.characters.first?.thumbnail.standard == standardThumbnailUrl)
+        #expect(result.characters.first?.thumbnail.portrait == portraitThumbnailUrl)
+        #expect(result.characters.first?.thumbnail.landscape == landscapeThumbnailUrl)
     }
     
     @Test("Data mapping with nil values")
@@ -190,7 +194,9 @@ import SwiftyMocky
         
         #expect(result.characters.first?.id == characterEntity.id)
         #expect(result.characters.first?.name == "")
-        #expect(result.characters.first?.thumbnail == "")
+        #expect(result.characters.first?.thumbnail.standard == "")
+        #expect(result.characters.first?.thumbnail.portrait == "")
+        #expect(result.characters.first?.thumbnail.landscape == "")
     }
 
     @Test("Throws error when repository fails")

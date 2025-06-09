@@ -13,6 +13,7 @@ struct CharacterMapper {
         .init(
             id: entity.id,
             name: entity.name ?? "",
+            description: entity.description ?? "",
             thumbnail: mapThumbnail(
                 path: entity.thumbnail?.path,
                 extension: entity.thumbnail?.extension
@@ -23,11 +24,15 @@ struct CharacterMapper {
 
 private extension CharacterMapper {
     
-    static func mapThumbnail(path: String?, extension: String?) -> String {
+    static func mapThumbnail(path: String?, extension: String?) -> Thumbnail {
         guard let path = path, let ext = `extension` else {
-            return ""
+            return Thumbnail(standard: "", portrait: "", landscape: "")
         }
         
-        return "\(path)/standard_medium.\(ext)"
+        return Thumbnail(
+            standard: "\(path)/standard_medium.\(ext)",
+            portrait: "\(path)/portrait_xlarge.\(ext)",
+            landscape: "\(path)/landscape_xlarge.\(ext)"
+        )
     }
 }

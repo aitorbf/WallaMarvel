@@ -12,10 +12,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        let charactersListView = CharactersListView(viewModel: DIContainer.shared.charactersListViewModel())
-        let hostingController = UIHostingController(rootView: charactersListView)
+        let coordinator = Coordinator(rootScreen: .charactersList)
         
-        window.rootViewController = hostingController
+        window.rootViewController = coordinator.navigationController
         self.window = window
         self.window?.makeKeyAndVisible()
     }
