@@ -10,6 +10,7 @@ protocol GetCharactersUseCase {
 }
 
 struct GetCharactersUseCaseImpl: GetCharactersUseCase {
+    
     private let repository: CharactersRepository
     
     init(repository: CharactersRepository) {

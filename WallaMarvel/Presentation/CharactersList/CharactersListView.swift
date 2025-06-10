@@ -35,6 +35,7 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
                                     }
                             }
                         }
+                        .padding(.bottom)
                     }
                 }
             }
@@ -50,9 +51,14 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
     private func characterListItem(character: Character) -> some View {
         HStack(spacing: 12) {
             KFImage.url(URL(string: character.thumbnail.standard))
+                .placeholder {
+                    Color.gray
+                        .frame(width: 80, height: 80)
+                }
                 .resizable()
                 .scaledToFit()
                 .frame(width: 80, height: 80)
+                .cornerRadius(8)
                 .padding(.leading, 12)
                 .padding(.top, 12)
             

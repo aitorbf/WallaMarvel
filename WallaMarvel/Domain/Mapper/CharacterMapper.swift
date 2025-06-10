@@ -14,25 +14,7 @@ struct CharacterMapper {
             id: entity.id,
             name: entity.name ?? "",
             description: entity.description ?? "",
-            thumbnail: mapThumbnail(
-                path: entity.thumbnail?.path,
-                extension: entity.thumbnail?.extension
-            )
-        )
-    }
-}
-
-private extension CharacterMapper {
-    
-    static func mapThumbnail(path: String?, extension: String?) -> Thumbnail {
-        guard let path = path, let ext = `extension` else {
-            return Thumbnail(standard: "", portrait: "", landscape: "")
-        }
-        
-        return Thumbnail(
-            standard: "\(path)/standard_medium.\(ext)",
-            portrait: "\(path)/portrait_xlarge.\(ext)",
-            landscape: "\(path)/landscape_xlarge.\(ext)"
+            thumbnail: ThumbnailMapper.map(entity.thumbnail)
         )
     }
 }

@@ -31,7 +31,7 @@ extension CharacterEntity {
                 id: i,
                 name: "Character \(i)",
                 description: "Description for character \(i)",
-                thumbnailPath: "https://marvel.com/character/image"
+                thumbnailPath: "https://marvel.com/character/\(i)/image"
             )
         }
     }

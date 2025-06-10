@@ -14,8 +14,7 @@ struct CharactersPageMapper {
             offset: entity.offset ?? 0,
             count: entity.count ?? 0,
             total: entity.total ?? 0,
-            characters: (entity.characters ?? []).map { CharacterMapper.map($0)
-            }
+            characters: (entity.characters ?? []).map { CharacterMapper.map($0) }
         )
     }
 }

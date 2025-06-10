@@ -12,10 +12,11 @@ extension API.Marvel {
     enum CharactersAPI: URLRequestConvertible {
         
         case getCharacters(offset: Int, limit: Int, searchText: String)
+        case getCharacterComics(characterId: Int, offset: Int, limit: Int)
         
         var method: HttpConstants.Method {
             switch self {
-            case .getCharacters:
+            case .getCharacters, .getCharacterComics:
                 return .get
             }
         }
@@ -24,6 +25,8 @@ extension API.Marvel {
             switch self {
             case .getCharacters:
                 return HttpConstants.marvelServiceBaseURL + "characters"
+            case let .getCharacterComics(characterId, _, _):
+                return HttpConstants.marvelServiceBaseURL + "characters/\(characterId)/comics"
             }
         }
         
@@ -45,6 +48,9 @@ extension API.Marvel {
                 if !searchText.isEmpty {
                     parameters["nameStartsWith"] = searchText
                 }
+            case let .getCharacterComics(_, offset, limit):
+                parameters["offset"] = String(offset)
+                parameters["limit"] = String(limit)
             }
             
             urlComponents.queryItems = parameters.map { key, value in

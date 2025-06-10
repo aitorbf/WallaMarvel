@@ -53,7 +53,6 @@ final class CharactersListViewModelImpl: CharactersListViewModel {
                 limit: limit,
                 searchText: searchText
             )
-            print("Characters \(charactersPage.characters)")
             
             offset += charactersPage.count
             characters.append(contentsOf: charactersPage.characters)

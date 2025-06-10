@@ -79,6 +79,14 @@ private extension DIContainer {
             return GetCharactersUseCaseImpl(repository: repository)
         }
         .inObjectScope(.container)
+        
+        container.register(GetCharacterComicsUseCase.self) { resolver in
+            guard let repository = resolver.resolve(CharactersRepository.self) else {
+                fatalError("CharactersRepository dependency could not be resolved.")
+            }
+            return GetCharacterComicsUseCaseImpl(repository: repository)
+        }
+        .inObjectScope(.container)
     }
     
     func registerViewModels() {
@@ -89,8 +97,14 @@ private extension DIContainer {
             return CharactersListViewModelImpl(getCharactersUseCase: useCase)
         }
         
-        container.register(CharacterDetailViewModelImpl.self) { _, character in
-            return CharacterDetailViewModelImpl(character: character)
+        container.register(CharacterDetailViewModelImpl.self) { resolver, character in
+            guard let useCase = resolver.resolve(GetCharacterComicsUseCase.self) else {
+                fatalError("GetCharacterComicsUseCase dependency could not be resolved.")
+            }
+            return CharacterDetailViewModelImpl(
+                character: character,
+                getCharacterComicsUseCase: useCase
+            )
         }
     }
 }
