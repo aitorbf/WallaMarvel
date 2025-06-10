@@ -1,16 +1,16 @@
 //
-//  CharactersListUIGroup.swift
-//  WallaMarvel
+//  CharacterDetailUIGroup.swift
+//  WallaMarvelSnapshotTests
 //
-//  Created by Aitor Baragaño Fernández on 7/6/25.
+//  Created by Aitor Baragaño Fernández on 10/6/25.
 //
 
 import UIKit
 import SnapshotTesting
 
-final class CharactersListUIGroup: UIGroup {
+final class CharacterDetailUIGroup: UIGroup {
     
-    static var identifier = "charactersList"
+    static var identifier = "characterDetail"
     
     static func screenshots(
         _ viewController: UIViewController,

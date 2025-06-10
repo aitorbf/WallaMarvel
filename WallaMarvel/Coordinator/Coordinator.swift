@@ -13,12 +13,12 @@ enum Screen {
 }
 
 /*
- The navigation logic is centralized in this Coordinator class,
- which is shared across SwiftUI views using the @EnvironmentObject pattern.
- This project uses UINavigationController from UIKit to handle navigation
- instead of SwiftUI's NavigationStack and NavigationDestination, in order to
- support iOS 15 as the minimum deployment target. Starting with iOS 16,
- a fully SwiftUI-based navigation stack could be implemented.
+The navigation logic is centralized in this Coordinator class,
+which is shared across SwiftUI views using the @EnvironmentObject pattern.
+This project uses UINavigationController from UIKit to handle navigation
+instead of SwiftUI's NavigationStack and NavigationDestination, in order to
+support iOS 15 as the minimum deployment target. Starting with iOS 16,
+a fully SwiftUI-based navigation stack could be implemented.
 */
 final class Coordinator: ObservableObject {
     

@@ -9,5 +9,9 @@ import Foundation
 
 final class MockCharacterDetailViewModel: CharacterDetailViewModel {
     
-    let character: Character = Character.mock()
+    var character: Character
+    
+    init(character: Character = Character.mock()) {
+        self.character = character
+    }
 }

@@ -13,7 +13,8 @@ import SnapshotTesting
 final class CharactersListScreenTests: XCTestCase {
     
     func testLoadingCharactersListScreen() throws {
-        let charactersListScreen = CharactersListView(viewModel: MockCharactersListViewModel())
+        let viewModel = MockCharactersListViewModel(characters: [])
+        let charactersListScreen = CharactersListView(viewModel: viewModel)
         let viewController = UIHostingController(rootView: charactersListScreen)
         
         CharactersListUIGroup.screenshots(viewController, name: "LoadingCharactersListScreen")
@@ -21,8 +22,6 @@ final class CharactersListScreenTests: XCTestCase {
     
     func testContentCharactersListScreen() throws {
         let viewModel =  MockCharactersListViewModel()
-        viewModel.characters = Character.mockList()
-        viewModel.isLoading = false
         let charactersListScreen = CharactersListView(viewModel: viewModel)
         let viewController = UIHostingController(rootView: charactersListScreen)
         
