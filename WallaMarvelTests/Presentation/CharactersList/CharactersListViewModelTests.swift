@@ -21,7 +21,7 @@ import SwiftyMocky
     
     @Test("Initial state")
     func testInitialState() {
-        #expect(viewModel.isLoading == true)
+        #expect(viewModel.viewState == .loading)
         #expect(viewModel.characters.isEmpty)
     }
     
@@ -58,9 +58,46 @@ import SwiftyMocky
             )
         )
         
-        #expect(viewModel.isLoading == false)
+        #expect(viewModel.viewState == .loaded)
         #expect(!viewModel.characters.isEmpty)
         #expect(viewModel.characters.count == response.count)
+    }
+    
+    @Test("Get characters empty")
+    func testGetCharactersEmpty() async {
+        let offset = 0
+        let limit = 50
+        let total = 100
+        let response = CharactersPage.mock(
+            offset: offset,
+            total: total,
+            characters: []
+        )
+        
+        Given(
+            useCase,
+            .execute(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                searchText: "",
+                willReturn: response
+            )
+        )
+        
+        await viewModel.getCharacters()
+        
+        Verify(
+            useCase,
+            .once,
+            .execute(
+                offset: Parameter(integerLiteral: offset),
+                limit: Parameter(integerLiteral: limit),
+                searchText: ""
+            )
+        )
+        
+        #expect(viewModel.viewState == .empty)
+        #expect(viewModel.characters.isEmpty)
     }
     
     @Test("Get characters error")
@@ -91,7 +128,7 @@ import SwiftyMocky
             )
         )
         
-        #expect(viewModel.isLoading == false)
+        #expect(viewModel.viewState == .error)
         #expect(viewModel.characters.isEmpty)
     }
     
@@ -215,7 +252,7 @@ import SwiftyMocky
         let response = CharactersPage.mock(
             offset: offset,
             total: total,
-            characters: Character.mockList(count: 50)
+            characters: Character.mockList(count: limit)
         )
         
         Given(

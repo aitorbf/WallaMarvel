@@ -60,6 +60,8 @@
 		5B9C33932DF85E7400D1D3CB /* GetCharacterComicsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C33922DF85E7400D1D3CB /* GetCharacterComicsUseCase.swift */; };
 		5B9C33972DF8B8AE00D1D3CB /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C33962DF8B8AE00D1D3CB /* EmptyState.swift */; };
 		5B9C339A2DF8B97600D1D3CB /* ErrorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C33992DF8B97600D1D3CB /* ErrorState.swift */; };
+		5B9C339C2DF8C3EB00D1D3CB /* GetCharacterComicsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C339B2DF8C3EB00D1D3CB /* GetCharacterComicsUseCaseTests.swift */; };
+		5B9C339E2DF8C62F00D1D3CB /* CharacterDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9C339D2DF8C62F00D1D3CB /* CharacterDetailViewModelTests.swift */; };
 		A66389F32DCE202500466318 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A66389F22DCE202500466318 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +147,8 @@
 		5B9C33922DF85E7400D1D3CB /* GetCharacterComicsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterComicsUseCase.swift; sourceTree = "<group>"; };
 		5B9C33962DF8B8AE00D1D3CB /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		5B9C33992DF8B97600D1D3CB /* ErrorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorState.swift; sourceTree = "<group>"; };
+		5B9C339B2DF8C3EB00D1D3CB /* GetCharacterComicsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCharacterComicsUseCaseTests.swift; sourceTree = "<group>"; };
+		5B9C339D2DF8C62F00D1D3CB /* CharacterDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -444,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9C31E62DF488F900D1D3CB /* GetCharactersUseCaseTests.swift */,
+				5B9C339B2DF8C3EB00D1D3CB /* GetCharacterComicsUseCaseTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 			isa = PBXGroup;
 			children = (
 				5B9C31EC2DF4946700D1D3CB /* CharactersListViewModelTests.swift */,
+				5B9C339D2DF8C62F00D1D3CB /* CharacterDetailViewModelTests.swift */,
 			);
 			path = CharactersList;
 			sourceTree = "<group>";
@@ -789,9 +795,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9C31ED2DF4946700D1D3CB /* CharactersListViewModelTests.swift in Sources */,
+				5B9C339E2DF8C62F00D1D3CB /* CharacterDetailViewModelTests.swift in Sources */,
 				5B9C31E72DF488F900D1D3CB /* GetCharactersUseCaseTests.swift in Sources */,
 				5B9C31E52DF4708B00D1D3CB /* CharactersRepositoryTests.swift in Sources */,
 				5B9C31312DF46B0D00D1D3CB /* Mock.generated.swift in Sources */,
+				5B9C339C2DF8C3EB00D1D3CB /* GetCharacterComicsUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
