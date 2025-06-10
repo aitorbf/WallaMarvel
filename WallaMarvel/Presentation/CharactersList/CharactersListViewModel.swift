@@ -9,9 +9,13 @@ import Foundation
 import SwiftUI
 import Combine
 
+enum CharactersListViewState {
+    case loading, loaded, empty, error
+}
+
 protocol CharactersListViewModel: ObservableObject {
+    var viewState: CharactersListViewState { get set }
     var characters: [Character] { get set }
-    var isLoading: Bool { get set }
     var searchText: String { get set }
     
     func getCharacters() async
@@ -20,8 +24,8 @@ protocol CharactersListViewModel: ObservableObject {
     
 final class CharactersListViewModelImpl: CharactersListViewModel {
     
+    @Published var viewState: CharactersListViewState = .loading
     @Published var characters: [Character] = []
-    @Published var isLoading: Bool = true
     @Published var searchText: String = ""
     
     private let getCharactersUseCase: GetCharactersUseCase
@@ -44,8 +48,10 @@ final class CharactersListViewModelImpl: CharactersListViewModel {
             return
         }
         
-        isLoading = characters.isEmpty
         isFetching = true
+        if characters.isEmpty {
+            viewState = .loading
+        }
         
         do {
             let charactersPage = try await getCharactersUseCase.execute(
@@ -57,11 +63,16 @@ final class CharactersListViewModelImpl: CharactersListViewModel {
             offset += charactersPage.count
             characters.append(contentsOf: charactersPage.characters)
             canFetchMore = characters.count < charactersPage.total
+            viewState = characters.isEmpty ? .empty : .loaded
         } catch {
             print("Error fetching characters: \(error.localizedDescription)")
+            if characters.isEmpty {
+                viewState = .error
+            }
+            // For manage errors in pagination, we can create a toast component or similar
+            // to show the error message to the user.
         }
         
-        isLoading = false
         isFetching = false
     }
     

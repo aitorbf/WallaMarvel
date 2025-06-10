@@ -11,14 +11,14 @@ import Combine
 
 final class MockCharactersListViewModel: CharactersListViewModel {
     
+    @Published var viewState: CharactersListViewState = .loading
     @Published var characters: [Character] = []
-    @Published var isLoading: Bool = true
     @Published var searchText: String = ""
     
     init(characters: [Character] = Character.mockList()) {
         self.characters = characters
         if !characters.isEmpty {
-            isLoading = false
+            viewState = .loaded
         }
     }
     

@@ -17,26 +17,28 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
     var body: some View {
         NavigationView {
             ZStack {
-                if viewModel.isLoading {
+                switch viewModel.viewState {
+                case .loading:
                     ProgressView()
-                } else {
-                    ScrollView(showsIndicators: false) {
-                        LazyVStack {
-                            ForEach(Array(viewModel.characters.enumerated()), id: \.element.id) { index, character in
-                                characterListItem(character: character)
-                                    .onAppear {
-                                        Task {
-                                            await viewModel.loadMoreCharacters(currentIndex: index)
-                                        }
-                                    }
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        coordinator.navigateTo(.characterDetail(character))
-                                    }
+                case .loaded:
+                    charactersListView
+                case .empty:
+                    EmptyState(
+                        title: "No Results",
+                        message: "We couldn't find any character matching \"\(viewModel.searchText)\". Try a different keyword",
+                        iconName: "magnifyingglass"
+                    )
+                case .error:
+                    ErrorState(
+                        title: "Oops!",
+                        message: "Something went wrong. Please try again.",
+                        iconName: "exclamationmark.triangle",
+                        retryAction: {
+                            Task {
+                                await viewModel.getCharacters()
                             }
                         }
-                        .padding(.bottom)
-                    }
+                    )
                 }
             }
             .navigationTitle("List of Characters")
@@ -46,6 +48,26 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    private var charactersListView: some View {
+        ScrollView(showsIndicators: false) {
+            LazyVStack {
+                ForEach(Array(viewModel.characters.enumerated()), id: \.element.id) { index, character in
+                    characterListItem(character: character)
+                        .onAppear {
+                            Task {
+                                await viewModel.loadMoreCharacters(currentIndex: index)
+                            }
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            coordinator.navigateTo(.characterDetail(character))
+                        }
+                }
+            }
+            .padding(.bottom)
+        }
     }
     
     private func characterListItem(character: Character) -> some View {
