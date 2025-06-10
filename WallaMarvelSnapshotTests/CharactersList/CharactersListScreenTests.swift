@@ -13,7 +13,7 @@ import SnapshotTesting
 final class CharactersListScreenTests: XCTestCase {
     
     func testLoadingCharactersListScreen() throws {
-        let viewModel = MockCharactersListViewModel(characters: [])
+        let viewModel = MockCharactersListViewModel()
         let charactersListScreen = CharactersListView(viewModel: viewModel)
         let viewController = UIHostingController(rootView: charactersListScreen)
         
@@ -21,10 +21,26 @@ final class CharactersListScreenTests: XCTestCase {
     }
     
     func testContentCharactersListScreen() throws {
-        let viewModel =  MockCharactersListViewModel()
+        let viewModel =  MockCharactersListViewModel(viewState: .loaded)
         let charactersListScreen = CharactersListView(viewModel: viewModel)
         let viewController = UIHostingController(rootView: charactersListScreen)
         
         CharactersListUIGroup.screenshots(viewController, name: "ContentCharactersListScreen")
+    }
+    
+    func testEmptyCharactersListScreen() throws {
+        let viewModel =  MockCharactersListViewModel(viewState: .empty)
+        let charactersListScreen = CharactersListView(viewModel: viewModel)
+        let viewController = UIHostingController(rootView: charactersListScreen)
+        
+        CharactersListUIGroup.screenshots(viewController, name: "EmptyCharactersListScreen")
+    }
+    
+    func testErrorCharactersListScreen() throws {
+        let viewModel =  MockCharactersListViewModel(viewState: .error)
+        let charactersListScreen = CharactersListView(viewModel: viewModel)
+        let viewController = UIHostingController(rootView: charactersListScreen)
+        
+        CharactersListUIGroup.screenshots(viewController, name: "ErrorCharactersListScreen")
     }
 }

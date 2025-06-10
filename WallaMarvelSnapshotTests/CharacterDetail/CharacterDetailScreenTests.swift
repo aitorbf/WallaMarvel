@@ -33,4 +33,21 @@ final class CharacterDetailScreenTests: XCTestCase {
         
         CharacterDetailUIGroup.screenshots(viewController, name: "CharacterDetailWithoutDescriptionScreen")
     }
+    
+    func testCharacterDetailWithoutComicsScreen() throws {
+        let viewModel =  MockCharacterDetailViewModel(comics: [])
+        let characterDetailScreen = CharacterDetailView(viewModel: viewModel)
+        let viewController = UIHostingController(rootView: characterDetailScreen)
+        
+        CharacterDetailUIGroup.screenshots(viewController, name: "CharacterDetailWithoutComicsScreen")
+    }
+    
+    func testCharacterDetailWithComicSelectedScreen() throws {
+        let comics = Comic.mockList()
+        let viewModel =  MockCharacterDetailViewModel(comics: comics, selectedComic: comics.first)
+        let characterDetailScreen = CharacterDetailView(viewModel: viewModel)
+        let viewController = UIHostingController(rootView: characterDetailScreen)
+        
+        CharacterDetailUIGroup.screenshots(viewController, name: "CharacterDetailWithComicSelectedScreen")
+    }
 }

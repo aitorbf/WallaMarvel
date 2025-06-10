@@ -15,11 +15,12 @@ final class MockCharactersListViewModel: CharactersListViewModel {
     @Published var characters: [Character] = []
     @Published var searchText: String = ""
     
-    init(characters: [Character] = Character.mockList()) {
+    init(
+        viewState: CharactersListViewState = .loading,
+        characters: [Character] = Character.mockList()
+    ) {
         self.characters = characters
-        if !characters.isEmpty {
-            viewState = .loaded
-        }
+        self.viewState = viewState
     }
     
     @MainActor

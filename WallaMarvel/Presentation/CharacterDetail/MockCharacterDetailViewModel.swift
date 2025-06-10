@@ -1,5 +1,5 @@
 //
-//  MockCharacterViewModel.swift
+//  MockCharacterDetailViewModel.swift
 //  WallaMarvel
 //
 //  Created by Aitor Baragaño Fernández on 9/6/25.
@@ -22,9 +22,7 @@ final class MockCharacterDetailViewModel: CharacterDetailViewModel {
         self.character = character
         self.comics = comics
         self.selectedComic = selectedComic
-        if !comics.isEmpty {
-            self.isLoadingComics = false
-        }
+        self.isLoadingComics = false
     }
     
     func getComics() async {
