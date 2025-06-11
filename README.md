@@ -5,7 +5,24 @@ A simple iOS app that fetches and displays a list of Marvel superheroes, built a
 
 ## ✨ Features
 
-- List of Marvel superheroes
+- List of Marvel superheroes with pagination  
+- Superhero search functionality  
+- Superhero detail view showing paginated list of comics and related information  
+- Accessibility to make the app usable and enjoyable for everyone, including users who depend on assistive technologies
+<br/><br/>
+
+## 🏗️ Architecture & Design Patterns
+
+This project follows a **clean MVVM (Model-View-ViewModel) architecture** and is structured in **three main layers** to ensure clear separation of concerns:
+- **Presentation**: Contains the SwiftUI views and their ViewModels, managing UI state and user interactions.
+- **Domain**: Contains use cases, domain models used in views, and mappers that transform data entities into models ready for presentation.
+- **Data**: Handles all data-related tasks, including repositories, data sources, and entities, as well as the logic for API calls.
+
+Additional patterns and best practices:
+- **Coordinator pattern**: Used for managing navigation throughout the app, ensuring a single source of truth for routing and improving scalability.
+- **Dependency Injection (DI)**: Dependencies are injected to simplify testing and maintainability.
+- **Combine and async/await**: Adopted to handle asynchronous data fetching and updates in a reactive and modern way.
+- **Accessibility first**: Designed to be usable by everyone, leveraging SwiftUI’s built-in accessibility APIs and enhancements.
 <br/><br/>
 
 ## 🛠️ Setup
@@ -128,7 +145,14 @@ SwiftyMocky will detect this marker and generate a ready-to-use mock for testing
 
 ### Snapshot Testing
 
-For UI testing I use [SnapshotTesting](https://github.com/pointfreeco/swift-snapshot-testing?tab=readme-ov-file), a library that captures the visual state of views and compares them to stored reference images, alerting us to any unexpected changes in the UI.
+This project uses [SnapshotTesting](https://github.com/pointfreeco/swift-snapshot-testing?tab=readme-ov-file) for UI testing, a library that captures the visual state of views and compares them to stored reference images, alerting us to any unexpected changes in the UI.
+<br/><br/>
+
+## 💡 Future Improvements
+
+- Superhero favorites system using Core Data or SwiftData  
+- Internationalization  
+- Navigation using `NavigationPath` and `NavigationDestination` from SwiftUI (minimum iOS 16)
 <br/><br/>
 
 ## 📄 License
