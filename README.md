@@ -3,6 +3,13 @@
 A simple iOS app that fetches and displays a list of Marvel superheroes, built as part of the Wallapop iOS technical test.
 <br/><br/>
 
+<p align="left">
+  <img src="Screenshots/Characters_List.png" alt="List of Characters" width="200"/>
+  <img src="Screenshots/Characters_Search.png" alt="Search Results" width="200"/>
+  <img src="Screenshots/Character_Detail.png" alt="Character Detail" width="200"/>
+  <img src="Screenshots/Character_Comic_Detail.png" alt="Character Comic Detail" width="200"/>
+</p>
+
 ## ✨ Features
 
 - List of Marvel superheroes with pagination  
