@@ -58,6 +58,8 @@ struct CharacterDetailView<ViewModel: CharacterDetailViewModel>: View {
                         .frame(width: 12, height: 12)
                         .padding()
                 }
+                .accessibilityLabel("Back")
+                .accessibilityHint("Navigates to previous screen")
                 
                 Spacer()
             }
@@ -75,6 +77,7 @@ struct CharacterDetailView<ViewModel: CharacterDetailViewModel>: View {
                 .resizable()
                 .scaledToFit()
                 .frame(maxWidth: .infinity)
+                .accessibilityHidden(true)
             
             LinearGradient(
                 gradient: Gradient(colors: [.clear, .black]),
@@ -82,6 +85,7 @@ struct CharacterDetailView<ViewModel: CharacterDetailViewModel>: View {
                 endPoint: .bottom
             )
             .frame(height: 150)
+            .accessibilityHidden(true)
             
             Text(viewModel.character.name)
                 .font(.largeTitle.bold())
@@ -89,19 +93,28 @@ struct CharacterDetailView<ViewModel: CharacterDetailViewModel>: View {
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
                 .padding()
+                .accessibilityHidden(true)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Name: \(viewModel.character.name)")
+        .accessibilityHint("Character name")
     }
     
     private var characterName: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Name")
                 .font(.title2.bold())
+                .accessibilityHidden(true)
             
             Text(viewModel.character.name)
                 .font(.body)
                 .multilineTextAlignment(.leading)
+                .accessibilityHidden(true)
         }
         .padding(.horizontal)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Name: \(viewModel.character.name)")
+        .accessibilityHint("Character name")
     }
     
     private var characterDescription: some View {
@@ -121,6 +134,8 @@ struct CharacterDetailView<ViewModel: CharacterDetailViewModel>: View {
             }
         }
         .padding(.horizontal)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Description: \(viewModel.character.description.isEmpty ? "No description available" : viewModel.character.description)")
     }
     
     private var comics: some View {
@@ -166,6 +181,8 @@ struct CharacterDetailView<ViewModel: CharacterDetailViewModel>: View {
                                         viewModel.selectComic(comic)
                                     }
                                 }
+                                .accessibilityLabel(comic.title)
+                                .accessibilityHint("Double tap to select comic")
                         }
                     }
                     .padding(.horizontal)
@@ -187,6 +204,7 @@ struct CharacterDetailView<ViewModel: CharacterDetailViewModel>: View {
                     .frame(width: 80, height: 120)
                     .cornerRadius(8)
                     .shadow(radius: 4)
+                    .accessibilityHidden(true)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(viewModel.selectedComic?.title ?? "Unknown Title")
@@ -225,6 +243,7 @@ struct CharacterDetailView<ViewModel: CharacterDetailViewModel>: View {
             .cornerRadius(12)
             .shadow(color: .primary, radius: 2)
             .padding(.horizontal)
+            .accessibilityHint("Currently selected comic")
         }
     }
     
@@ -252,6 +271,7 @@ struct CharacterDetailView<ViewModel: CharacterDetailViewModel>: View {
                     .scaledToFit()
                     .frame(maxHeight: height * 0.7)
                     .cornerRadius(12)
+                    .accessibilityHidden(true)
                 
                 VStack(alignment: .leading, spacing: 16) {
                     characterName

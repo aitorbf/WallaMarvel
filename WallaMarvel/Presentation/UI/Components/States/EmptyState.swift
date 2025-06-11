@@ -21,6 +21,7 @@ struct EmptyState: View {
                     .scaledToFit()
                     .frame(width: 50, height: 50)
                     .padding(.bottom, 32)
+                    .accessibilityHidden(true)
             }
 
             Text(title)
@@ -36,6 +37,7 @@ struct EmptyState: View {
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .accessibilityElement(children: .combine)
     }
 }
 

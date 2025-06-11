@@ -24,6 +24,7 @@ struct ErrorState: View {
                     .foregroundColor(.red)
                     .frame(width: 50, height: 50)
                     .padding(.bottom, 32)
+                    .accessibilityHidden(true)
             }
 
             Text(title)
@@ -47,9 +48,12 @@ struct ErrorState: View {
                             .stroke(Color.primary, lineWidth: 1)
                     }
             }
+            .accessibilityLabel("Retry")
+            .accessibilityHint("Try to load characters again")
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .accessibilityElement(children: .combine)
     }
 }
 

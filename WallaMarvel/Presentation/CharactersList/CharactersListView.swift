@@ -42,9 +42,11 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
                 }
             }
             .navigationTitle("List of Characters")
+            .accessibilityLabel("List of Characters")
             .searchable(
                 text: $viewModel.searchText,
-                placement: .navigationBarDrawer(displayMode: .always)
+                placement: .navigationBarDrawer(displayMode: .always),
+                prompt: Text("Search Characters...")
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -64,6 +66,7 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
                         .onTapGesture {
                             coordinator.navigateTo(.characterDetail(character))
                         }
+                        .accessibilityAddTraits(.isButton)
                 }
             }
             .padding(.bottom)
@@ -83,13 +86,18 @@ struct CharactersListView<ViewModel: CharactersListViewModel>: View {
                 .cornerRadius(8)
                 .padding(.leading, 12)
                 .padding(.top, 12)
+                .accessibilityHidden(true)
             
             Text(character.name)
                 .font(.headline)
                 .multilineTextAlignment(.leading)
+                .accessibilityHidden(true)
             
             Spacer()
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(character.name)
+        .accessibilityHint("Double tap to view details")
     }
 }
 
